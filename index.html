@@ -206,8 +206,15 @@
     }
 
     .overview2 {
-      height: 70%;
+      height: 65%;
       max-height: 650px;
+    }
+
+    @media screen and (min-width:768px) {
+      .overview2 {
+        height: 70%;
+        max-height: 650px;
+      }
     }
 
     #closed-btn,
@@ -448,8 +455,7 @@
         <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
         <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
 
-
-        <h3 class="text-xl my-5" id="manual_h3">連立方程式による解法</h3>
+        <!--<h3 class="text-xl my-5" id="manual_h3">連立方程式による解法</h3>
         <p>鶴を$x$羽、亀を$y$匹とする。</p>
         <p class="my-3">鶴と亀の合計が$100$羽（匹）いるので、</p>
         <p>$x + y = 100 \cdots $ ①</p>
@@ -457,9 +463,15 @@
         <p>$ 2x + 4y = 272 \cdots $ ②</p>
         <p class="my-3">①、②の連立方程式を解くと、</p>
         <p>$x = 64$、$y = 36$</p>
-        <p class="mt-3">よって、鶴 $64$ 羽、亀 $36$ 匹となる。</p>
+        <p class="mt-3">よって、鶴 $64$ 羽、亀 $36$ 匹となる。</p>-->
+
+        <h3 class="text-xl my-5" id="manual_h3">生成AIによる解法</h3>
+        <div><a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法"><img
+              src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法"></a></div>
 
         <p class="mt-3">答え：鶴 $64$ 羽、亀 $36$ 匹</p>
+
+
 
       </div>
 
@@ -480,8 +492,8 @@
       <div class="grid grid-cols-2 gap-2 mb-5">
         <div><a href="./data/tawarasugi1.jpg" data-lightbox="tawarasugi" data-title="俵杉算"><img
               src="./data/tawarasugi1.jpg" alt="俵杉算" width="100%"></a></div>
-              <div><a href="./data/tawarasugi2.jpg" data-lightbox="tawarasugi" data-title="現代語訳"><img src="./data/tawarasugi2.jpg"
-                width="100%" alt="現代語訳"></a></div>
+        <div><a href="./data/tawarasugi2.jpg" data-lightbox="tawarasugi" data-title="現代語訳"><img
+              src="./data/tawarasugi2.jpg" width="100%" alt="現代語訳"></a></div>
       </div>
 
       <span class="kaisetu-btn px-3 py-2 my-3 rounded-lg" onclick="below(1)">解 説 <i
@@ -490,12 +502,13 @@
       <div id="1" class="kaisetu mt-3">
         <h3 class="text-xl my-5" id="manual_h3">模範回答</h3>
         <p class="my-3">今、右に$13$列有り、下に、$13 + 1 = 14$個あると考えて、$13 × 14 ÷ 2 = 91$個あることとなる。</p>
-      
+
         <h3 class="text-xl my-5" id="manual_h3">台形の面積と考える方法</h3>
         <p class="my-3">上辺$1$、下辺$13$、高さ$13$の台形と考えて、面積を求めると、台形の面積の公式より、$( 1 + 13 ) × 13 ÷ 2 = 91$</p>
 
-        <h3 class="text-xl my-5" id="manual_h3">等差数列による解法</h3>
-        <p class="my-3">初項$1$、等差$1$の等差数列の一般項は、$1/2 × n × (n + 1)$なので、$n = 13$とすると、俵の個数は、$1/2 × 13 × ( 13 + 1 ) = 91$となる。</p>
+        <h3 class="text-xl my-5" id="manual_h3">生成AIによる解法</h3>
+        <div><a href="./data/ai/tawarasugi.jpg" data-lightbox="turukame" data-title="生成AIの解法"><img
+              src="./data/ai/tawarasugi.jpg" width="100%" alt="生成AIの解法"></a></div>
 
         <p class="mt-3">答え：$91$個</p>
       </div>
@@ -517,8 +530,8 @@
       <div class="grid grid-cols-2 gap-2 mb-5">
         <div><a href="./data/aburawake1.jpg" data-lightbox="aburawake" data-title="油分け算"><img
               src="./data/aburawake1.jpg" alt="油分け算" width="100%"></a></div>
-              <div><a href="./data/aburawake2.jpg" data-lightbox="aburawake" data-title="現代語訳"><img
-                src="./data/aburawake2.jpg" alt="油分け算" width="100%"></a></div>
+        <div><a href="./data/aburawake2.jpg" data-lightbox="aburawake" data-title="現代語訳"><img
+              src="./data/aburawake2.jpg" alt="油分け算" width="100%"></a></div>
       </div>
 
       <span class="kaisetu-btn px-3 py-2 my-3 rounded-lg" onclick="below(2)">解 説 <i
@@ -544,10 +557,10 @@
       <div class="item_title text-xl mb-3"><img src="./images/icon/kokyo.svg" id="img_midashi" alt="kokyoのアイコン">
         薬師算</div>
       <div class="grid grid-cols-2 gap-2 mb-5">
-        <div><a href="./data/yakushi1.jpg" data-lightbox="yakushi" data-title="薬師算"><img
-          src="./data/yakushi1.jpg" alt="油分け算" width="100%"></a></div>
-          <div><a href="./data/yakushi2.jpg" data-lightbox="yakushi" data-title="現代語訳"><img
-            src="./data/yakushi2.jpg" alt="油分け算" width="100%"></a></div>
+        <div><a href="./data/yakushi1.jpg" data-lightbox="yakushi" data-title="薬師算"><img src="./data/yakushi1.jpg"
+              alt="油分け算" width="100%"></a></div>
+        <div><a href="./data/yakushi2.jpg" data-lightbox="yakushi" data-title="現代語訳"><img src="./data/yakushi2.jpg"
+              alt="油分け算" width="100%"></a></div>
       </div>
 
       <span class="kaisetu-btn px-3 py-2 my-3 rounded-lg" onclick="below(3)">解 説 <i
@@ -707,8 +720,8 @@
       <div class="item_title text-xl mb-3"><img src="./images/icon/mokko.svg" id="img_midashi" alt="mokkoのアイコン">
         日本最古の九九表</div>
       <div class="grid grid-cols-2 gap-2 mb-5">
-        <div><a href="./data/kuku1.jpg" data-lightbox="kuku" data-title="日本最古の九九表"><img
-              src="./data/kuku1.jpg" alt="日本最古の九九表" width="100%"></a></div>
+        <div><a href="./data/kuku1.jpg" data-lightbox="kuku" data-title="日本最古の九九表"><img src="./data/kuku1.jpg"
+              alt="日本最古の九九表" width="100%"></a></div>
         <div><img src="./data/kuku1.jpg" width="100%"></div>
       </div>
 
