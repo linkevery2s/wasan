@@ -35,13 +35,18 @@
 		"key": "koraisokuryou"
 	},
 	{
-		"id": 9,
+		"id": 8,
 		"title": "からす算",
 		"key": "karasu"
 	},
 	{
-		"id": 10,
+		"id": 9,
 		"title": "日本最古の九九表",
 		"key": "kuku"
+	},
+	{
+		"id": 10,
+		"title": "２の平方根",
+		"key": "heihokon"
 	}
 ]
