@@ -409,6 +409,17 @@
     .item:nth-child(odd) {
       background: rgba(242, 242, 242, .5);
     }
+
+    #footer img{
+      width: 25px;
+      display: inline-block;
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(31deg) brightness(87%) contrast(129%);
+    }
+
+    #title-midashi{
+      width: 25px;
+      display: inline-block;
+    }
   </style>
 
   <link rel="manifest" href="./manifest.json">
@@ -600,7 +611,7 @@
     </div>
 
     <div class="px-5 pt-3 pb-1 mb-5 border-double border-4 border-black rounded-xl relative" id="seihatikakukei">
-      <div class="item_title text-xl mb-3"><img src="./images/icon/ninja.svg" id="img_midashi" alt="ninjaのアイコン">
+      <div class="item_title text-xl mb-3"><img src="./images/icon/onigiri.svg" id="img_midashi" alt="ninjaのアイコン">
         正八角形の面積</div>
       <div class="grid grid-cols-2 gap-2 mb-5">
         <div><a href="./data/seihatikakukei1.jpg" data-lightbox="seihatikakukei" data-title="正八角形の面積"><img
@@ -805,7 +816,7 @@
 
   <!-- はじめに -->
   <div id="beginner"><span id="closed-btn" class="py-2 px-3 text-xs">閉じる</span>
-    <h3 class="text-2xl text-center"><i class="fa-solid fa-user"></i> はじめに</h3>
+    <h3 class="text-2xl text-center"><img src="./images/icon/ninja.svg" id="title-midashi">はじめに</h3>
 
     <div class="overflow-y-scroll overview mt-5 mx-3">
       <img src="./images/fuji.jpg" width="100%" alt="富士山と河口湖畔の紅葉 © koichi_hayakawa">
@@ -853,7 +864,7 @@
 
   <!-- 使い方 -->
   <div id="manual"><span id="closed-btn2" class="py-2 px-3 text-xs">閉じる</span>
-    <h3 class="text-2xl text-center"><i class="fa-solid fa-book-open"></i> 使い方</h3>
+    <h3 class="text-2xl text-center"><img src="./images/icon/shurijo.svg" id="title-midashi"> 使い方</h3>
 
     <div class="overflow-y-scroll overview mt-5 mx-3">
       <img src="./images/inari.jpg" width="100%" alt="南宮稲荷神社 © SHori">
@@ -902,7 +913,7 @@
   </div>
 
   <div id="search" class="text-center"><span id="closed-btn5" class="py-2 px-3 text-xs">閉じる</span>
-    <h3 class="text-2xl text-center mb-3"><i class="fa-solid fa-search"></i> 検　索</h3>
+    <h3 class="text-2xl text-center mb-3"><img src="./images/icon/ikebana.svg" id="title-midashi"> 検　索</h3>
 
     <input type="text" name="text1" id="text" class="mb-3 pl-2" size="15" autocomplete="off" autofocus
       placeholder="キーワード検索" />
@@ -935,9 +946,9 @@
   <!-- フッター -->
   <div id="footer" class="footer p-2 text-center">
     <div class="grid gap-4 grid-cols-3 grid-rows-1">
-      <div class="beginner-btn"><i class="fa-solid fa-user"></i> はじめに</div>
-      <div class="manual-btn"><i class="fa-solid fa-book-open"></i> 使い方</div>
-      <div class="search-btn"><i class="fa-solid fa-search"></i> 検　索</div>
+      <div class="beginner-btn"><img src="./images/icon/ninja.svg"> はじめに</div>
+      <div class="manual-btn"><img src="./images/icon/shurijo.svg"> 使い方</div>
+      <div class="search-btn"><img src="./images/icon/ikebana.svg"> 検　索</div>
     </div>
     <p class="text-xs mt-1"><a href="https://github.com/linkevery2s/wasan" target="_blank">src on
         GitHub</a>.
