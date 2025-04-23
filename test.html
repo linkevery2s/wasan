@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<title>和算を嗜む</title>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="和算を嗜む" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://wasan-taste.netlify.app/images/ogp.jpg" />
+    <meta name="description"
+        content="江戸時代、鎖国文化の中で広がったものの一つに和算があります。日本独自の文化ですが、その計算力とみるや、海外と引けを取らないことを知りました。文献から学んで、アプリケーションという形に仕上げました。" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="和算を嗜む" />
+    <meta name="twitter:image" content="https://wasan-taste.netlify.app/images/ogp.jpg" />
+    <meta name="author" content="Saito Hitoshi">
+    <meta name="keywords" content="和算,算数,数学,江戸時代,鎖国,鎖国文化" />
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.jpg">
+    <link rel="icon" href="./images/apple-touch-icon.jpg">
+
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.min.js"
+        integrity="sha512-0A4MbfuZq5Au9EdpI1S5rUTXlibNBi8CuZ/X3ycwXyZiCjNzpiO9YH6EMqPgzZm6vfNCuZStBQHjnO17nIC0IQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <link rel="manifest" href="./manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js').then(function () {
+                console.log('Service Worker Registered');
+            });
+        }
+    </script>
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+        integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+        integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+        crossorigin="anonymous"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+        crossorigin="anonymous"></script>
+
+    <!-- $などで囲うために必要 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\\[", right: "\\]", display: true },
+                    { left: "$", right: "$", display: false }
+                ]
+            });
+        });
+    </script>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
+            background: #000000;
+        }
+
+        #header {
+            position: fixed;
+            padding: .7em;
+            border-radius: 30px;
+            z-index: 2;
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            left: 50%;
+            top: 20px;
+            transform: translate(-50%);
+            border: 5px solid #9d5b8b;
+
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            z-index: 0;
+        }
+
+        .title-icon {
+            color: #9d5b8b;
+            position: fixed;
+            left: 15px;
+            top: 10px;
+        }
+
+        #img_midashi {
+            display: flex;
+            width: 30px;
+            filter: invert(47%) sepia(80%) saturate(256%) hue-rotate(265deg) brightness(78%) contrast(94%);
+        }
+
+        .leaflet-control-attribution {
+            bottom: 30px !important;
+        }
+
+        .sns-fb {
+            position: absolute;
+            left: 5px;
+            bottom: 32px;
+        }
+
+        .fb_iframe_widget>span {
+            vertical-align: top !important;
+        }
+
+        .footer {
+            background: #ffffff;
+            color: #000000;
+            z-index: 2;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .update,
+        .footer p a {
+            border-bottom: 1px dotted #000000;
+        }
+
+        .update {
+            cursor: pointer;
+        }
+
+        #overlay {
+            position: fixed;
+            width: 100%;
+            height: 120vh;
+            display: none;
+            background: rgba(0, 0, 0, .5);
+            z-index: 5;
+        }
+
+        #introduction,
+        #manual,
+        #update {
+            display: none;
+            height: 80%;
+            max-height: 900px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+            max-width: 600px;
+            z-index: 11;
+            background: #ffffff;
+            padding: .3em;
+            border-radius: .5em;
+        }
+
+        #menu {
+            display: none;
+            right: .5em;
+            bottom: 5px;
+            z-index: 11;
+            position: absolute;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        #closed-btn,
+        #closed-btn2,
+        #closed-btn3,
+        #closed-btn4,
+        #closed-btn5 {
+            position: absolute;
+            right: 4px;
+            color: #ffffff;
+            background: #9d5b8b;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bolder;
+            border-radius: .3em;
+            z-index: 12;
+        }
+
+        #closed-btn:hover,
+        #closed-btn2:hover,
+        #closed-btn3:hover,
+        #closed-btn4:hover,
+        #closed-btn5:hover {
+            background: #ffffff;
+            color: #9d5b8b;
+            border: 1px solid #9d5b8b;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="header">
+        <center>
+            <span class="title-icon"><img src="./images/icon/mokko.svg" id="img_midashi"></span>
+            <a href="./index.html">
+                <div class="title"><span class="text-xl">和算を嗜む</span> <span class="text-xs">- 和算のダンジョン</span></div>
+            </a>
+        </center>
+    </div>
+
+
+    <div id="map"></div>
+
+    <div id="overlay"></div>
+
+    <div id="overlay2"></div>
+
+
+    <!-- 更新情報 -->
+    <div id="update" class="p-3"><span id="closed-btn3" class="py-2 px-3 text-xs">閉じる</span>
+        <h2 class="text-2xl text-center mb-3 mt-3"><i class="fa-solid fa-circle-info"></i> 更新情報</h2>
+
+        <div class="overflow-y-scroll mb-5 mx-2 overview">
+
+            <p class="mt-5">2025.04.10 GUIリニューアル</p>
+            <p class="mt-5">2024.11.29 アプリ公開</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- フッター -->
+    <div id="footer" class="footer pt-2 pl-2 pr-2 pb-2 text-center">
+        <div class="sns-fb">
+            <div class="fb-share-button" data-href="https://wasan-taste.netlify.app/" data-layout="button_count"
+                data-size="small"></div>
+        </div>
+
+        <p class="text-xs"><a href="https://github.com/linkevery2s/apollon" target="_blank">src on GitHub</a>.
+            <i class="fa-regular fa-copyright"></i> <a href="https://hitoshi2s.netlify.app/" target="_blank">齋藤 仁志</a>.
+            <span class="update">更新情報</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-WMoBJRTdA1bmN_SmQ-bsNGeLs1l737d3c9BUNuErjH-KBw/viewform"
+                target="_blank">お問い合わせ</a>
+
+        </p>
+
+
+    </div>
+
+    <script type="module">
+
+        onload = async () => {
+
+            let image = {
+                url: './images/map.png',
+                width: 2310,
+                height: 2030
+            };
+
+            let minZoom = 3, maxZoom = 3, DefalultZoom = 4;
+
+            const map = L.map('map', {
+                crs: L.CRS.Simple,
+                minZoom: minZoom,
+                maxZoom: maxZoom,
+                zoomControl: false
+            });
+
+            let imageBounds = L.latLngBounds([
+                map.unproject([0, image.height], DefalultZoom),
+                map.unproject([image.width, 0], DefalultZoom)
+            ]);
+
+            //map.fitBounds(imageBounds);
+            map.setMaxBounds(imageBounds.pad(0.5));
+
+            let hash = new L.Hash(map);
+
+            map.setView([-32.15, 60.18], 3);
+
+            L.imageOverlay(image.url, imageBounds).addTo(map);
+
+        }
+
+    </script>
+
+
+    <!-- Facebookシェアボタン -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v19.0"
+        nonce="Pm3nh7PB"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MPP84V2NHB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-MPP84V2NHB');
+    </script>
+
+</body>
+
+</html>
