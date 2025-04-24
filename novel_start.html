@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>はじめに</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #222;
+            color: #fff;
+            font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+        }
+
+        #game-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            box-sizing: border-box;
+            background: url('./images/rpg_background.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        #text-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            line-height: 1.5;
+            position: relative;
+            height: 150px;
+        }
+
+        #next-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            animation: blink 1s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        #character {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="game-container">
+        <img id="character" src="" alt="画像" style="display: none;">
+        <div id="text-box">
+            <div id="story-text"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        const story = [
+            {
+                text: "今日も良い天気だ。",
+                character: null // 画像を非表示にしたい場合
+            },
+            {
+                text: "のんびりと道端を歩いていた。",
+                character: null
+            },
+            {
+                text: "「誰かー助けてくれー！」",
+                character: "./images/test2.png"
+            },
+            {
+                text: "［あなた］何だろう？",
+                character: "./images/test.png"
+            },
+            {
+                text: "不思議に思い、近づいてみると、人が倒れているのが見えた。",
+                character: null
+            },
+            {
+                text: "［あなた］どうされました？",
+                character: "./images/test.png"
+            },
+            {
+                text: "隣にいた男性に聞くと、自分の母親が突然、倒れて動かないとのこと。どうする？",
+                character: null
+            },
+
+
+            {
+                text: "始まりの洞窟 END...",
+                character: null
+            }
+        ];
+
+        let currentIndex = 0;
+        const storyText = document.getElementById("story-text");
+        const textbox = document.getElementById("text-box");
+        const characterImg = document.getElementById("character");
+
+        let isTyping = false;
+
+        let indicator;
+
+        let typeText = (text, callback) => {
+            let i = 0;
+            storyText.textContent = "";
+            isTyping = true;
+            // nextButton.disabled = true;
+            textbox.disabled = true;
+
+            if (indicator) {
+                indicator.remove();
+                indicator = null;
+            }
+
+            const interval = setInterval(() => {
+                storyText.textContent += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(interval);
+                    isTyping = false;
+                    textbox.disabled = false;
+
+                    showIndicator();
+
+                    if (callback) callback();
+                }
+            }, 50); // 表示間隔（ミリ秒）
+        }
+
+        let showIndicator = () => {
+            indicator = document.createElement("span");
+            indicator.id = "next-indicator";
+            indicator.textContent = "▶︎";
+            storyText.appendChild(indicator);
+        }
+
+        let showNext = () => {
+            if (currentIndex < story.length) {
+                const { text, character } = story[currentIndex];
+
+                // キャラクター表示/非表示
+                if (character) {
+                    characterImg.src = character;
+                    characterImg.style.display = "block";
+                } else {
+                    characterImg.style.display = "none";
+                }
+
+                typeText(text);
+                currentIndex++;
+            } else {
+
+                characterImg.style.display = "none";
+                storyText.textContent = "左下のTOPボタンより、お戻りください。";
+
+            }
+        }
+
+        textbox.addEventListener("click", () => {
+            if (!isTyping) {
+                showNext();
+            }
+        });
+
+        // 最初のストーリー表示
+        showNext();
+    </script>
+</body>
+
+</html>
