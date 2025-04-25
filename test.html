@@ -449,7 +449,7 @@
 
             // Leaflet Start
             let image = {
-                url: './images/map.png',
+                url: './images/map.jpg',
                 width: 2310,
                 height: 2030
             };
@@ -471,57 +471,67 @@
             //map.fitBounds(imageBounds);
             map.setMaxBounds(imageBounds.pad(0.5));
 
-            // let hash = new L.Hash(map);
-
             map.setView([-32.15, 60.18], 3);
 
             L.imageOverlay(image.url, imageBounds).addTo(map);
 
+            /* attribution */
             const tiles = L.tileLayer("", {
                 attribution: "&copy; <a href='https://hitoshi2s.netlify.app/' target='_blank'>齋藤 仁志</a>"
             }).addTo(map);
 
-
-            let begginer = new L.marker([-15.3, 59.1], { icon: L.AwesomeMarkers.icon({ icon: 'bookmark', prefix: 'fa', markerColor: 'pink' }) }).addTo(map)
-                .bindPopup("<span class='start' id='leaflet_icon'>始まりの洞窟</span>")
+            /* icon */
+            const begginer = new L.marker([-15.3, 59.1], { icon: L.AwesomeMarkers.icon({ icon: 'bookmark', prefix: 'fa', markerColor: 'pink' }) }).addTo(map)
+                .bindPopup("<a href ='./novel_start.html' id='leaflet_icon'>始まりの洞窟</a>")
                 .openPopup();
+
+            const tyasitu = new L.marker([-19.5, 105.1], { icon: L.AwesomeMarkers.icon({ icon: 'mug-saucer', prefix: 'fa', markerColor: 'brown' }) }).addTo(map)
+                .bindPopup("<a href='./novel_tyasitu.html' id='leaflet_icon'>茶室の間</a>");
+
+            const turutokame = new L.marker([-19.646, 12.997], { icon: L.AwesomeMarkers.icon({ icon: 'feather-pointed', prefix: 'fa', markerColor: 'black' }) }).addTo(map)
+                .bindPopup("<a href='./novel_turutokame.html' id='leaflet_icon'>鶴と亀の間</a>");
+
+                const laboratory = new L.marker([-68.424,115.864], { icon: L.AwesomeMarkers.icon({ icon: 'flask-vial', prefix: 'fa', markerColor: 'blue' }) }).addTo(map)
+                .bindPopup("<a href='./novel_laboratory.html' id='leaflet_icon'>研究の間</a>");
 
             // Leaflet End
 
-            const top_btn = document.querySelector("#top-btn");
+
+
+            /* menu */
             const menu_btn = document.querySelector("#menu-btn");
+            menu_btn.addEventListener("click", () => {
+                $("#menu").toggle();
+            });
 
+            //const top_btn = document.querySelector("#top-btn");
             const novel_game = document.querySelector("#novelgame");
-            const start = document.querySelector(".start");
 
-            const map_frame = document.querySelector("#map");
-
-            top_btn.addEventListener("click", () => {
+            /*top_btn.addEventListener("click", () => {
 
                 novel_game.style.display = "none";
                 map_frame.style.display = "block";
                 top_btn.style.display = "none";
                 menu_btn.style.display = "block";
 
-            });
+            });*/
 
-            /* メニュー画面 */
-            menu_btn.addEventListener("click", () => {
-                $("#menu").toggle();
-            });
-
-            start.addEventListener("click", () => {
+            /* map changed */
+            const start = document.querySelector(".start");
+            const map_frame = document.querySelector("#map");
+            window.start = () => {
 
                 map_frame.style.display = "none";
-                novel_game.style.display = "block";
 
+                novel_game.style.display = "block";
                 novel_game.innerHTML = "<iframe src='./novel_start.html' width='100%' height='100%'></iframe>";
 
                 menu_btn.style.display = "none";
                 top_btn.style.display = "block";
 
-            });
+            };
 
+            /* menu button */
             const intro_btn = document.querySelector('#intro-btn');
             const manual_btn = document.querySelector('#manual-btn');
             const share_btn = document.querySelector('#share-btn');
@@ -530,12 +540,10 @@
                 $('#overlay').fadeIn();
                 $('#introduction').fadeIn();
             });
-
             manual_btn.addEventListener('click', () => {
                 $('#overlay').fadeIn();
                 $('#manual').fadeIn();
             });
-
             share_btn.addEventListener('click', () => {
                 $('#overlay').fadeIn();
                 $('#share').fadeIn();
@@ -550,31 +558,20 @@
                 $('#overlay').fadeOut();
                 $('#introduction').fadeOut();
             });
-
             closed_btn2.addEventListener('click', () => {
                 $('#overlay').fadeOut();
                 $('#manual').fadeOut();
             });
-
             closed_btn3.addEventListener('click', () => {
                 $('#overlay').fadeOut();
                 $('#share').fadeOut();
             });
-
             overlay.addEventListener('click', () => {
                 $('#overlay').fadeOut();
                 $('#introduction').fadeOut();
                 $('#manual').fadeOut();
                 $('#share').fadeOut();
-
             });
-
-            /*
-                            const introduction_btn = document.querySelector('.introduction-btn');
-                            introduction_btn.addEventListener('click', () => {
-                                $('#overlay').fadeIn();
-                                $('#introduction').fadeIn();
-                            });*/
 
         };
 
