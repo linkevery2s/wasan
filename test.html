@@ -319,11 +319,11 @@
     <div id="menu">
 
         <ul class="text-left p-5">
-            <!--<a href="./index.html"><li id="home-btn" class="text-lg"><i class="fa-solid fa-house"></i> ホーム</li></a>-->
-            <li id="intro-btn" class="text-lg"><i class="fa-solid fa-bookmark"></i> はじめに</li>
-            <li id="manual-btn" class="text-lg mt-3"><i class="fa-solid fa-book"></i> 使い方</li>
-            <li id="share-btn" class="text-lg mt-3"><i class="fa-solid fa-comments"></i> シェア</li>
-            <li id="update-btn" class="text-lg mt-3"><i class="fa-solid fa-circle-info"></i> 更新情報</li>
+            <li id="home-btn" class="text-lg mb-3"><i class="fa-solid fa-house"></i> ホーム</li>
+            <li id="intro-btn" class="text-lg mb-3"><i class="fa-solid fa-bookmark"></i> はじめに</li>
+            <li id="manual-btn" class="text-lg mb-3"><i class="fa-solid fa-book"></i> 使い方</li>
+            <li id="share-btn" class="text-lg mb-3"><i class="fa-solid fa-comments"></i> シェア</li>
+            <li id="update-btn" class="text-lg"><i class="fa-solid fa-circle-info"></i> 更新情報</li>
         </ul>
 
     </div>
@@ -486,17 +486,17 @@
 
             /* icon */
             const begginer = new L.marker([-15.3, 59.1], { icon: L.AwesomeMarkers.icon({ icon: 'bookmark', prefix: 'fa', markerColor: 'pink' }) }).addTo(map)
-                .bindPopup("<a href='./novel_start.html' class='leaflet_icon'>始まりの洞窟</a>")
+                .bindPopup("<span id='start' onclick = 'novelshow(this)' class='leaflet_icon'>始まりの洞窟</span>")
                 .openPopup();
 
             const tyasitu = new L.marker([-19.5, 105.1], { icon: L.AwesomeMarkers.icon({ icon: 'mug-saucer', prefix: 'fa', markerColor: 'brown' }) }).addTo(map)
-                .bindPopup("<a href='./novel_tyasitu.html' class='leaflet_icon'>茶室の間</a>");
+                .bindPopup("<span id='tyasitu' onclick = 'novelshow(this)' class='leaflet_icon'>茶室の間</span>");
 
             const turutokame = new L.marker([-19.646, 12.997], { icon: L.AwesomeMarkers.icon({ icon: 'feather-pointed', prefix: 'fa', markerColor: 'black' }) }).addTo(map)
                 .bindPopup("<span id='turutokame' onclick = 'novelshow(this)' class='leaflet_icon'>鶴と亀の間</span>");
 
             const laboratory = new L.marker([-68.424, 115.864], { icon: L.AwesomeMarkers.icon({ icon: 'flask-vial', prefix: 'fa', markerColor: 'blue' }) }).addTo(map)
-                .bindPopup("<a href='./novel_laboratory.html' class='leaflet_icon'>研究の間</a>");
+                .bindPopup("<span id='laboratory' onclick = 'novelshow(this)' class='leaflet_icon'>研究の間</span>");
 
             // Leaflet End
 
@@ -508,42 +508,52 @@
                 $("#menu").toggle();
             });
 
-            const back_btn = document.querySelector("#back-btn");
+            // const back_btn = document.querySelector("#back-btn");
             const novel_game = document.querySelector("#novelgame");
 
-            back_btn.addEventListener("click", () => {
+            /*back_btn.addEventListener("click", () => {
 
                 novel_game.style.display = "none";
                 map_frame.style.display = "block";
                 back_btn.style.display = "none";
                 menu_btn.style.display = "block";
 
-            });
+            });*/
 
             /* map changed */
             //const start = document.querySelector(".start");
             const map_frame = document.querySelector("#map");
+            const header = document.querySelector("#header");
 
             window.novelshow = (ele) => {
 
-                let id_value = ele.id;
+                $('#menu').fadeOut();
 
+                let id_value = ele.id;
                 novel_game.innerHTML = "<iframe src='./novel_" + id_value + ".html' width='100%' height= '100%' border='0'></iframe>";
 
                 map_frame.style.display = "none";
+                header.style.display = "none";
                 novel_game.style.display = "block";
 
-                menu_btn.style.display = "none";
-                back_btn.style.display = "block";
+                // menu_btn.style.display = "none";
+                // back_btn.style.display = "block";
 
             };
 
             /* menu button */
+            const home_btn = document.querySelector('#home-btn');
             const intro_btn = document.querySelector('#intro-btn');
             const manual_btn = document.querySelector('#manual-btn');
             const share_btn = document.querySelector('#share-btn');
             const update_btn = document.querySelector('#update-btn');
 
+            home_btn.addEventListener('click', () => {
+                novel_game.style.display = "none";
+                map_frame.style.display = "block";
+                header.style.display = "block";
+                $('#menu').fadeOut();
+            });
             intro_btn.addEventListener('click', () => {
                 $('#overlay').fadeIn();
                 $('#introduction').fadeIn();
