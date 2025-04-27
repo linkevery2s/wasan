@@ -207,7 +207,7 @@
             border-radius: 0 .5em 0 0;
         }
 
-        #top-btn {
+        #back-btn {
             display: none;
             left: 0;
             bottom: 0;
@@ -217,7 +217,7 @@
             /*#FA8AE8*/
             color: #ffffff;
             cursor: pointer;
-            border-radius: 0 .5em 0 0;
+            border-radius: 0 .5em .5em 0;
         }
 
         #menu {
@@ -243,19 +243,22 @@
         }
 
         .overview {
-            height: 90%;
+            height: 85%;
         }
 
+        #home-btn,
         #intro-btn,
         #manual-btn,
-        #share-btn {
+        #share-btn,
+        #update-btn {
             cursor: pointer;
         }
 
         .fa-bookmark,
-        .fa-home,
+        .fa-house,
         .fa-book,
-        .fa-comments {
+        .fa-comments,
+        .fa-circle-info {
             color: #b44c97;
         }
 
@@ -310,25 +313,26 @@
 
     <!-- button -->
     <div id="menu-btn" class="p-3 text-sm">MENU</div>
-    <div id="top-btn" class="p-3 text-sm">TOP</div>
+    <div id="back-btn" class="p-3 text-sm mb-5">BACK</div>
 
     <!-- menu -->
     <div id="menu">
 
         <ul class="text-left p-5">
-            <li id="home-btn" class="text-lg"><i class="fa-solid fa-home"></i> ホーム</li>
-            <li id="intro-btn" class="text-lg mt-3"><i class="fa-solid fa-bookmark"></i> はじめに</li>
+            <!--<a href="./index.html"><li id="home-btn" class="text-lg"><i class="fa-solid fa-house"></i> ホーム</li></a>-->
+            <li id="intro-btn" class="text-lg"><i class="fa-solid fa-bookmark"></i> はじめに</li>
             <li id="manual-btn" class="text-lg mt-3"><i class="fa-solid fa-book"></i> 使い方</li>
             <li id="share-btn" class="text-lg mt-3"><i class="fa-solid fa-comments"></i> シェア</li>
+            <li id="update-btn" class="text-lg mt-3"><i class="fa-solid fa-circle-info"></i> 更新情報</li>
         </ul>
 
     </div>
 
     <!-- introduction -->
-    <div id="introduction"><span id="closed-btn" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
+    <div id="introduction" class="pb-5"><span id="closed-btn" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
         <h3 class="text-2xl text-center mt-2"><i class=" fa-solid fa-bookmark"></i> はじめに</h3>
 
-        <div class="overflow-y-scroll overview mt-5 mx-3 pb-5">
+        <div class="overflow-y-scroll overview mt-5 mx-3">
             <img src="./images/fuji.jpg" width="100%" alt="富士山と河口湖畔の紅葉 © koichi_hayakawa">
             <p class="text-xs mt-1 source">富士山と河口湖畔の紅葉 © koichi_hayakawa、<a
                     href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY ４.0</a></p>
@@ -376,10 +380,10 @@
 
 
     <!-- manual -->
-    <div id="manual"><span id="closed-btn2" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
+    <div id="manual" class="pb-5"><span id="closed-btn2" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
         <h3 class="text-2xl text-center mt-2"><i class=" fa-solid fa-book"></i> 使い方</h3>
 
-        <div class="overflow-y-scroll overview mt-5 mx-3 pb-5">
+        <div class="overflow-y-scroll overview mt-5 mx-3">
             <img src="./images/inari.jpg" width="100%" alt="南宮稲荷神社 © SHori">
             <p class="text-xs mt-1 source">南宮稲荷神社 © SHori、<a href="https://creativecommons.org/licenses/by/4.0/deed.ja"
                     target="_blank">CC BY ４.0</a></p>
@@ -404,9 +408,9 @@
 
     </div>
 
-    <div id="share" class="text-center"><span id="closed-btn3" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
+    <div id="share" class="text-center pb-5"><span id="closed-btn3" class="py-2 px-3 text-xs mt-1 mr-1">閉じる</span>
         <h3 class="text-2xl text-center mt-2"><i class=" fa-solid fa-comments"></i> シェア</h3>
-        <div class="mt-5 overview text-left px-3 pb-5 overflow-y-scroll">
+        <div class="mt-5 overview text-left px-3 overflow-y-scroll">
             <img src="./images/ajisai.jpg" width="100%" alt="紫陽花 © yaaaaa">
             <p class="text-xs mt-1 source">紫陽花 © yaaaaa、<a href="https://creativecommons.org/licenses/by/4.0/deed.ja"
                     target="_blank">CC BY ４.0</a></p>
@@ -428,7 +432,7 @@
 
 
     <!-- 更新情報 -->
-    <div id="update" class="p-3"><span id="closed-btn3" class="py-2 px-3 text-xs">閉じる</span>
+    <div id="update" class="p-3"><span id="closed-btn4" class="py-2 px-3 text-xs">閉じる</span>
         <h2 class="text-2xl text-center mb-3 mt-3"><i class="fa-solid fa-circle-info"></i> 更新情報</h2>
 
         <div class="overflow-y-scroll mb-5 mx-2 overview">
@@ -489,7 +493,7 @@
                 .bindPopup("<a href='./novel_tyasitu.html' class='leaflet_icon'>茶室の間</a>");
 
             const turutokame = new L.marker([-19.646, 12.997], { icon: L.AwesomeMarkers.icon({ icon: 'feather-pointed', prefix: 'fa', markerColor: 'black' }) }).addTo(map)
-                .bindPopup("<a href='./novel_turutokame.html' class='leaflet_icon'>鶴と亀の間</a>");
+                .bindPopup("<span id='turutokame' onclick = 'novelshow(this)' class='leaflet_icon'>鶴と亀の間</span>");
 
             const laboratory = new L.marker([-68.424, 115.864], { icon: L.AwesomeMarkers.icon({ icon: 'flask-vial', prefix: 'fa', markerColor: 'blue' }) }).addTo(map)
                 .bindPopup("<a href='./novel_laboratory.html' class='leaflet_icon'>研究の間</a>");
@@ -504,14 +508,14 @@
                 $("#menu").toggle();
             });
 
-            const top_btn = document.querySelector("#top-btn");
+            const back_btn = document.querySelector("#back-btn");
             const novel_game = document.querySelector("#novelgame");
 
-            top_btn.addEventListener("click", () => {
+            back_btn.addEventListener("click", () => {
 
                 novel_game.style.display = "none";
                 map_frame.style.display = "block";
-                top_btn.style.display = "none";
+                back_btn.style.display = "none";
                 menu_btn.style.display = "block";
 
             });
@@ -520,7 +524,7 @@
             //const start = document.querySelector(".start");
             const map_frame = document.querySelector("#map");
 
-            window.mapshow = (ele) => {
+            window.novelshow = (ele) => {
 
                 let id_value = ele.id;
 
@@ -530,7 +534,7 @@
                 novel_game.style.display = "block";
 
                 menu_btn.style.display = "none";
-                top_btn.style.display = "block";
+                back_btn.style.display = "block";
 
             };
 
@@ -538,6 +542,7 @@
             const intro_btn = document.querySelector('#intro-btn');
             const manual_btn = document.querySelector('#manual-btn');
             const share_btn = document.querySelector('#share-btn');
+            const update_btn = document.querySelector('#update-btn');
 
             intro_btn.addEventListener('click', () => {
                 $('#overlay').fadeIn();
@@ -551,10 +556,15 @@
                 $('#overlay').fadeIn();
                 $('#share').fadeIn();
             });
+            update_btn.addEventListener('click', () => {
+                $('#overlay').fadeIn();
+                $('#update').fadeIn();
+            });
 
             const closed_btn = document.querySelector("#closed-btn");
             const closed_btn2 = document.querySelector("#closed-btn2");
             const closed_btn3 = document.querySelector("#closed-btn3");
+            const closed_btn4 = document.querySelector("#closed-btn4");
             const overlay = document.querySelector('#overlay');
 
             closed_btn.addEventListener('click', () => {
@@ -569,11 +579,16 @@
                 $('#overlay').fadeOut();
                 $('#share').fadeOut();
             });
+            closed_btn4.addEventListener('click', () => {
+                $('#overlay').fadeOut();
+                $('#update').fadeOut();
+            });
             overlay.addEventListener('click', () => {
                 $('#overlay').fadeOut();
                 $('#introduction').fadeOut();
                 $('#manual').fadeOut();
                 $('#share').fadeOut();
+                $('#update').fadeOut();
             });
 
     </script>
