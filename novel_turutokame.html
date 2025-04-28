@@ -9,6 +9,14 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Katex -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
         integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
@@ -55,23 +63,6 @@
             box-sizing: border-box;
             background: url('./images/rpg/bg_turutokame.jpg') no-repeat center center;
             background-size: cover;
-        }
-
-        #explanation {
-            display: none;
-            background: #ffffff;
-            padding: 10px;
-        }
-
-        .item_title {
-            color: #19448e;
-            font-weight: bolder;
-            display: flex;
-        }
-
-        #img_midashi {
-            display: flex;
-            width: 30px;
         }
 
         #text-box {
@@ -144,6 +135,56 @@
             border-bottom: 1px dotted #ffffff;
             color: #ffffff;
         }
+
+        #explanation {
+            display: none;
+            background: #ffffff;
+            padding: 1rem;
+            background-image: url("./images/background/1.jpg");
+            background-repeat: repeat-y;
+            background-position: right;
+            background-size: 25%;
+
+        }
+
+        .item_title {
+            color: #19448e;
+            font-weight: bolder;
+            display: flex;
+            font-size: 1.25rem;
+            border-bottom: 2px dotted #38b48b;
+            padding-bottom: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        #img_midashi {
+            display: flex;
+            width: 30px;
+        }
+
+        .grid {
+            display: flex;
+        }
+
+        h3::before {
+            font-family: "Font Awesome 6 Free";
+            content: " \e0bb";
+            font-weight: bold;
+            color: #eb6ea5;
+        }
+
+        .story_back{
+            cursor: pointer;
+            padding: .5rem;
+            background: #b44c97;
+            border-radius: .5em;
+            color: #ffffff;
+        }
+
+        .div_right{
+            text-align: right;
+        }
+
     </style>
 </head>
 
@@ -168,178 +209,195 @@
 
     <div id="explanation" class="p-5">
 
-        <div class="item_title text-xl mb-3"><img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
-        </div>
-        <div class="grid grid-cols-2 gap-2 mb-5">
-            <div><a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算"><img
-                        src="./data/turukame1.jpg" width="100%" alt="鶴亀算"></a></div>
-            <div><a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳"><img
-                        src="./data/turukame2.jpg" width="100%" alt="現代語訳"></a></div>
+        <div class="item_title">
+            <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
         </div>
 
-        <div id="0" class="mt-3">
-            <h3 class="text-xl my-5" id="manual_h3">模範回答</h3>
+        <div class="grid">
+            <div class="grid-inline">
+                <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
+                    <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
+                </a>
+            </div>
+            <div class="grid-inline">
+                <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
+                    <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
+                </a>
+            </div>
+        </div>
+
+        <div>
+
+            <h3> 模範回答</h3>
             <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
             <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
             <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
             <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
             <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
 
+            <h3> 生成AIによる解法</h3>
 
-            <h3 class="text-xl my-5" id="manual_h3">生成AIによる解法</h3>
-            <div><a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法"><img
-                        src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法"></a></div>
+            <div>
+                <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
+                    <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
+                </a>
+            </div>
 
-            <p class="mt-3">答え：鶴 $64$ 羽、亀 $36$ 匹</p>
-
+            <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
 
         </div>
 
-        <script type="module">
-            const story = [
-                {
-                    text: "[あなた]...どこだ、ここは？",
-                    character: null // 画像を非表示にしたい場合
-                },
-                {
-                    text: "看板の裏側には、次のように書かれていた。",
-                    character: "./images/rpg/set_sugitagenpaku.jpg"
-                },
-                {
-                    text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                    character: "./images/rpg/set_sugitagenpaku.jpg"
-                },
-                {
-                    text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                    character: "./images/rpg/set_sugitagenpaku.jpg"
-                },
-                {
-                    text: "始まりの洞窟 END...",
-                    character: null
-                }
-            ];
+        <div class="div_right">
+        <span class="story_back" onclick="location.reload();">もう一度、ストーリーを聞く</span>
+        </div>
 
-            let currentIndex = 0;
-            const storyText = document.getElementById("story-text");
-            const textbox = document.getElementById("text-box");
-            const characterImg = document.getElementById("character");
-            const choicesDiv = document.getElementById("choices");
+    </div>
 
-            let isTyping = false;
+    <script type="module">
+        const story = [
+            {
+                text: "[あなた]...どこだ、ここは？",
+                character: null // 画像を非表示にしたい場合
+            },
+            {
+                text: "看板の裏側には、次のように書かれていた。",
+                character: "./images/rpg/set_sugitagenpaku.jpg"
+            },
+            {
+                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
+                character: "./images/rpg/set_sugitagenpaku.jpg"
+            },
+            {
+                text: "[あなた]和算か、面白そうだな。学んでみよう！",
+                character: "./images/rpg/set_sugitagenpaku.jpg"
+            },
+            {
+                text: "始まりの洞窟 END...",
+                character: null
+            }
+        ];
 
-            let indicator;
+        let currentIndex = 0;
+        const storyText = document.getElementById("story-text");
+        const textbox = document.getElementById("text-box");
+        const characterImg = document.getElementById("character");
+        const choicesDiv = document.getElementById("choices");
 
-            let typeText = (text, callback) => {
-                let i = 0;
-                storyText.textContent = "";
-                isTyping = true;
-                // nextButton.disabled = true;
-                textbox.disabled = true;
+        let isTyping = false;
 
-                if (indicator) {
-                    indicator.remove();
-                    indicator = null;
-                }
+        let indicator;
 
-                const interval = setInterval(() => {
-                    storyText.textContent += text.charAt(i);
-                    i++;
-                    if (i >= text.length) {
-                        clearInterval(interval);
-                        isTyping = false;
-                        textbox.disabled = false;
+        let typeText = (text, callback) => {
+            let i = 0;
+            storyText.textContent = "";
+            isTyping = true;
+            // nextButton.disabled = true;
+            textbox.disabled = true;
 
-                        showIndicator();
-
-                        if (callback) callback();
-                    }
-                }, 50); // 表示間隔（ミリ秒）
+            if (indicator) {
+                indicator.remove();
+                indicator = null;
             }
 
-            let showIndicator = () => {
-                indicator = document.createElement("span");
-                indicator.id = "next-indicator";
-                indicator.textContent = "▶︎";
-                storyText.appendChild(indicator);
-            }
-
-            let showNext = () => {
-
-                if (currentIndex < story.length) {
-                    const { text, character } = story[currentIndex];
-
-                    // キャラクター表示/非表示
-                    if (character) {
-                        characterImg.src = character;
-                        characterImg.style.display = "block";
-                    } else {
-                        characterImg.style.display = "none";
-                    }
-
-                    typeText(text);
-                    currentIndex++;
-
-                } else {
-
-                    /* 選択肢メニュー表示 */
-                    storyText.style.display = "none";
-                    choicesDiv.style.display = "block";
+            const interval = setInterval(() => {
+                storyText.textContent += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(interval);
+                    isTyping = false;
                     textbox.disabled = false;
 
+                    showIndicator();
+
+                    if (callback) callback();
                 }
+            }, 50); // 表示間隔（ミリ秒）
+        }
+
+        let showIndicator = () => {
+            indicator = document.createElement("span");
+            indicator.id = "next-indicator";
+            indicator.textContent = "▶︎";
+            storyText.appendChild(indicator);
+        }
+
+        let showNext = () => {
+
+            if (currentIndex < story.length) {
+                const { text, character } = story[currentIndex];
+
+                // キャラクター表示/非表示
+                if (character) {
+                    characterImg.src = character;
+                    characterImg.style.display = "block";
+                } else {
+                    characterImg.style.display = "none";
+                }
+
+                typeText(text);
+                currentIndex++;
+
+            } else {
+
+                /* 選択肢メニュー表示 */
+                storyText.style.display = "none";
+                choicesDiv.style.display = "block";
+                textbox.disabled = false;
+
             }
+        }
 
-            textbox.addEventListener("click", () => {
-                if (!isTyping) {
-                    showNext();
-                }
-            });
+        textbox.addEventListener("click", () => {
+            if (!isTyping) {
+                showNext();
+            }
+        });
 
-            /* 選択ボタン */
-            const next = document.querySelector("#next");
-            const reload = document.querySelector("#reload");
-            const map_back = document.querySelector("#map_back");
+        /* 選択ボタン */
+        const next = document.querySelector("#next");
+        const reload = document.querySelector("#reload");
+        const map_back = document.querySelector("#map_back");
 
-            next.addEventListener("click", () => {
+        next.addEventListener("click", () => {
 
-                document.querySelector("#game-container").style.display = "none";
-                $('#explanation').fadeIn();
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
-            });
+        });
 
-            reload.addEventListener("click", () => {
+        reload.addEventListener("click", () => {
 
-                location.reload();
+            location.reload();
 
-            });
+        });
 
-            map_back.addEventListener("click", () => {
+        map_back.addEventListener("click", () => {
 
-                textbox.textContent = "左下のMENUからホームボタンをタップして、ダンジョンマップにお戻りください。";
+            textbox.textContent = "左下のMENUからホームボタンをタップして、ダンジョンマップにお戻りください。";
 
-            });
+        });
 
-            // 最初のストーリー表示
-            showNext();
+        // 最初のストーリー表示
+        showNext();
 
-        </script>
+    </script>
 
-        <!-- lightbox2 -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"
-            integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
-            integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- lightbox2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"
+        integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
+        integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- lightbox2 options -->
-        <script>
-            lightbox.option({
-                "alwaysShowNavOnTouchDevices": true,
-                "disableScrolling": true
-            })
+    <!-- lightbox2 options -->
+    <script>
+        lightbox.option({
+            "alwaysShowNavOnTouchDevices": true,
+            "disableScrolling": true
+        })
 
-        </script>
+    </script>
 </body>
 
 </html>
