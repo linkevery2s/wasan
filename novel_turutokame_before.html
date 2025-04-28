@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <title>鶴亀算</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #222;
+            color: #fff;
+            font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+        }
+
+        #game-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            box-sizing: border-box;
+            background: url('./images/rpg/bg_turutokame.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        #text-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            line-height: 1.5;
+            position: relative;
+            height: 150px;
+        }
+
+        #next-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            animation: blink 1s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        #character {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            pointer-events: none;
+        }
+
+        .attribution {
+            font-size: 0.75rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 10;
+            background: rgba(0, 0, 0, .5);
+            width: 100%;
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        .attribution a {
+            text-decoration: none;
+            border-bottom: 1px dotted #ffffff;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game-container">
+        <img id="character" src="" alt="画像" style="display: none;">
+        <div id="text-box">
+            <div id="story-text"></div>
+        </div>
+    </div>
+
+    <div class="attribution">
+        京都　大原　三千院　池泉鑑賞式庭園 © T-KIMURA <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY
+            4.0</a>
+    </div>
+
+    <script type="module">
+        const story = [
+            {
+                text: "[あなた]...どこだ、ここは？",
+                character: null // 画像を非表示にしたい場合
+            },
+            {
+                text: "[あなた]どうやら洞窟のようだ。",
+                character: null
+            },
+            {
+                text: "[あなた]看板がある...",
+                character: null
+            },
+            {
+                text: "[あなた]始まりの洞窟...",
+                character: "./images/rpg/start.jpg"
+            },
+            {
+                text: "看板の裏側には、次のように書かれていた。",
+                character: "./images/rpg/start.jpg"
+            },
+            {
+                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
+                character: "./images/rpg/start.jpg"
+            },
+            {
+                text: "[看板の裏側]江戸時代を代表するキャラクター達が、和算やその時代の特徴について教えてくれます。この機会に、和算について、知識を深めてみましょう！",
+                character: "./images/rpg/start.jpg"
+            },
+            {
+                text: "[看板の裏側]江戸時代を代表するキャラクター達が、和算やその時代の特徴について教えてくれます。この機会に、和算について、知識を深めてみましょう！",
+                character: "./images/rpg/start.jpg"
+            },
+            {
+                text: "[あなた]和算か、面白そうだな。学んでみよう！",
+                character: "./images/rpg/start.jpg"
+            },
+            {
+                text: "始まりの洞窟 END...",
+                character: null
+            }
+        ];
+
+        let currentIndex = 0;
+        const storyText = document.getElementById("story-text");
+        const textbox = document.getElementById("text-box");
+        const characterImg = document.getElementById("character");
+
+        let isTyping = false;
+
+        let indicator;
+
+        let typeText = (text, callback) => {
+            let i = 0;
+            storyText.textContent = "";
+            isTyping = true;
+            // nextButton.disabled = true;
+            textbox.disabled = true;
+
+            if (indicator) {
+                indicator.remove();
+                indicator = null;
+            }
+
+            const interval = setInterval(() => {
+                storyText.textContent += text.charAt(i);
+                i++;
+                if (i >= text.length) {
+                    clearInterval(interval);
+                    isTyping = false;
+                    textbox.disabled = false;
+
+                    showIndicator();
+
+                    if (callback) callback();
+                }
+            }, 50); // 表示間隔（ミリ秒）
+        }
+
+        let showIndicator = () => {
+            indicator = document.createElement("span");
+            indicator.id = "next-indicator";
+            indicator.textContent = "▶︎";
+            storyText.appendChild(indicator);
+        }
+
+        let showNext = () => {
+            if (currentIndex < story.length) {
+                const { text, character } = story[currentIndex];
+
+                // キャラクター表示/非表示
+                if (character) {
+                    characterImg.src = character;
+                    characterImg.style.display = "block";
+                } else {
+                    characterImg.style.display = "none";
+                }
+
+                typeText(text);
+                currentIndex++;
+            } else {
+
+                //characterImg.style.display = "none";
+                storyText.textContent = "左下のBACKボタンよりお戻りください。";
+
+            }
+        }
+
+        textbox.addEventListener("click", () => {
+            if (!isTyping) {
+                showNext();
+            }
+        });
+
+        // 最初のストーリー表示
+        showNext();
+    </script>
+</body>
+
+</html>
