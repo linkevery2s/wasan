@@ -502,9 +502,12 @@
             const laboratory = new L.marker([-68.424, 115.864], { icon: L.AwesomeMarkers.icon({ icon: 'flask-vial', prefix: 'fa', markerColor: 'blue' }) }).addTo(map)
                 .bindPopup("<span id='laboratory' onclick = 'novelshow(this)' class='leaflet_icon'>研究の間</span>");
 
+            const surveying = new L.marker([-54.47,12.988], { icon: L.AwesomeMarkers.icon({ icon: 'pen-ruler', prefix: 'fa', markerColor: 'red' }) }).addTo(map)
+                .bindPopup("<span id='surveying' onclick = 'novelshow(this)' class='leaflet_icon'>測量の間</span>");
+
             // Leaflet End
 
-
+            
 
             /* menu */
             const menu_btn = document.querySelector("#menu-btn");
