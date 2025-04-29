@@ -144,6 +144,8 @@
             background-repeat: repeat-y;
             background-position: right;
             background-size: 25%;
+            max-width: 800px;
+            text-align: left;
 
         }
 
@@ -173,7 +175,7 @@
             color: #eb6ea5;
         }
 
-        .story_back{
+        .top, .story_back {
             cursor: pointer;
             padding: .5rem;
             background: #b44c97;
@@ -181,10 +183,13 @@
             color: #ffffff;
         }
 
-        .div_right{
-            text-align: right;
+        .top{
+            margin-right: .5em;
         }
 
+        .div_right {
+            text-align: right;
+        }
     </style>
 </head>
 
@@ -207,6 +212,7 @@
 
     </div>
 
+    <center>
     <div id="explanation" class="p-5">
 
         <div class="item_title">
@@ -247,11 +253,13 @@
 
         </div>
 
-        <div class="div_right">
-        <span class="story_back" onclick="location.reload();">もう一度、ストーリーを聞く</span>
+        <div class="div_right" id="story_back">
+            <span class="top"><i class="fa-solid fa-angles-up"></i> TOP</span>
+            <span class="story_back" onclick="location.reload();">Story Back</span>
         </div>
 
     </div>
+    </center>
 
     <script type="module">
         const story = [
@@ -380,6 +388,18 @@
         // 最初のストーリー表示
         showNext();
 
+        const top_back = document.querySelector(".top");
+
+        top_back.addEventListener("click", ()=>{
+
+            $('body,html').animate({
+					scrollTop: $("#explanation").offset().top
+				}, 1000);
+
+				return false;
+
+        });
+
     </script>
 
     <!-- lightbox2 -->
@@ -398,6 +418,7 @@
         })
 
     </script>
+
 </body>
 
 </html>
