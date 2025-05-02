@@ -143,7 +143,7 @@
             top: 10px;
         }
 
-        .title{
+        .title {
             cursor: pointer;
         }
 
@@ -301,7 +301,8 @@
         <center>
             <span class="title-icon"><img src="./images/icon/mokko.svg" id="img_midashi"></span>
 
-                <div class="title" onclick="location.reload();"><span class="text-xl">和算を嗜む</span> <span class="text-xs">- ダンジョンRPG</span></div>
+            <div class="title" onclick="location.reload();"><span class="text-xl">和算を嗜む</span> <span class="text-xs">-
+                    ダンジョンRPG</span></div>
 
             <span class="title-icon2"><img src="./images/icon/samurai.svg" id="img_midashi"></span>
         </center>
@@ -455,158 +456,187 @@
 
     <script type="module">
 
-            // Leaflet Start
-            let image = {
-                url: './images/map.jpg',
-                width: 2310,
-                height: 2030
-            };
+        // Leaflet Start
+        let image = {
+            url: './images/map.jpg',
+            width: 2310,
+            height: 2030
+        };
 
-            let minZoom = 3, maxZoom = 3, DefalultZoom = 4;
+        let minZoom = 3, maxZoom = 3, DefalultZoom = 4;
 
-            const map = L.map('map', {
-                crs: L.CRS.Simple,
-                minZoom: minZoom,
-                maxZoom: maxZoom,
-                zoomControl: false
-            });
+        const map = L.map('map', {
+            crs: L.CRS.Simple,
+            minZoom: minZoom,
+            maxZoom: maxZoom,
+            zoomControl: false
+        });
 
-            let imageBounds = L.latLngBounds([
-                map.unproject([0, image.height], DefalultZoom),
-                map.unproject([image.width, 0], DefalultZoom)
-            ]);
+        let imageBounds = L.latLngBounds([
+            map.unproject([0, image.height], DefalultZoom),
+            map.unproject([image.width, 0], DefalultZoom)
+        ]);
 
-            //map.fitBounds(imageBounds);
-            map.setMaxBounds(imageBounds.pad(0.5));
+        //map.fitBounds(imageBounds);
+        map.setMaxBounds(imageBounds.pad(0.5));
 
-            map.setView([-32.15, 60.18], 3);
+        map.setView([-32.15, 60.18], 3);
 
-            L.imageOverlay(image.url, imageBounds).addTo(map);
+        L.imageOverlay(image.url, imageBounds).addTo(map);
 
-            /* attribution */
-            const tiles = L.tileLayer("", {
-                attribution: "&copy; <a href='https://hitoshi2s.netlify.app/' target='_blank'>齋藤 仁志</a>"
-            }).addTo(map);
+        /* attribution */
+        const tiles = L.tileLayer("", {
+            attribution: "&copy; <a href='https://hitoshi2s.netlify.app/' target='_blank'>齋藤 仁志</a>"
+        }).addTo(map);
 
-            /* icon */
-            const begginer = new L.marker([-15.3, 59.1], { icon: L.AwesomeMarkers.icon({ icon: 'bookmark', prefix: 'fa', markerColor: 'pink' }) }).addTo(map)
-                .bindPopup("<span id='start' onclick = 'novelshow(this)' class='leaflet_icon'>始まりの洞窟</span>")
-                .openPopup();
+        /* icon */
+        const begginer = new L.marker([-15.3, 59.1], { icon: L.AwesomeMarkers.icon({ icon: 'bookmark', prefix: 'fa', markerColor: 'pink' }) }).addTo(map)
+            .bindPopup("<span id='start' onclick = 'novelshow(this)' class='leaflet_icon'>始まりの洞窟</span>")
+            .openPopup();
 
-            const tyasitu = new L.marker([-19.5, 105.1], { icon: L.AwesomeMarkers.icon({ icon: 'mug-saucer', prefix: 'fa', markerColor: 'brown' }) }).addTo(map)
-                .bindPopup("<span id='tyasitu' onclick = 'novelshow(this)' class='leaflet_icon'>茶室の間</span>");
+        const tyasitu = new L.marker([-19.5, 105.1], { icon: L.AwesomeMarkers.icon({ icon: 'mug-saucer', prefix: 'fa', markerColor: 'brown' }) }).addTo(map)
+            .bindPopup("<span id='tyasitu' onclick = 'novelshow(this)' class='leaflet_icon'>茶室の間</span>");
 
-            const turutokame = new L.marker([-19.646, 12.997], { icon: L.AwesomeMarkers.icon({ icon: 'feather-pointed', prefix: 'fa', markerColor: 'black' }) }).addTo(map)
-                .bindPopup("<span id='turutokame' onclick = 'novelshow(this)' class='leaflet_icon'>鶴と亀の間</span>");
+        const heihoukon = new L.marker([-19.375, 83.224], { icon: L.AwesomeMarkers.icon({ icon: 'square-root-variable', prefix: 'fa', markerColor: 'orange' }) }).addTo(map)
+            .bindPopup("<span id='heihouukon' onclick = 'novelshow(this)' class='leaflet_icon'>平方根の間</span>");
 
-            const laboratory = new L.marker([-68.424, 115.864], { icon: L.AwesomeMarkers.icon({ icon: 'flask-vial', prefix: 'fa', markerColor: 'blue' }) }).addTo(map)
-                .bindPopup("<span id='laboratory' onclick = 'novelshow(this)' class='leaflet_icon'>研究の間</span>");
+        const turutokame = new L.marker([-19.646, 12.997], { icon: L.AwesomeMarkers.icon({ icon: 'feather-pointed', prefix: 'fa', markerColor: 'green' }) }).addTo(map)
+            .bindPopup("<span id='turutokame' onclick = 'novelshow(this)' class='leaflet_icon'>鶴と亀の間</span>");
 
-            const surveying = new L.marker([-54.47,12.988], { icon: L.AwesomeMarkers.icon({ icon: 'pen-ruler', prefix: 'fa', markerColor: 'red' }) }).addTo(map)
-                .bindPopup("<span id='surveying' onclick = 'novelshow(this)' class='leaflet_icon'>測量の間</span>");
+        const laboratory = new L.marker([-68.424, 115.864], { icon: L.AwesomeMarkers.icon({ icon: 'flask-vial', prefix: 'fa', markerColor: 'blue' }) }).addTo(map)
+            .bindPopup("<span id='laboratory' onclick = 'novelshow(this)' class='leaflet_icon'>研究の間</span>");
 
-            // Leaflet End
+        const surveying = new L.marker([-54.47, 12.988], { icon: L.AwesomeMarkers.icon({ icon: 'pen-ruler', prefix: 'fa', markerColor: 'orange' }) }).addTo(map)
+            .bindPopup("<span id='surveying' onclick = 'novelshow(this)' class='leaflet_icon'>測量の間</span>");
 
-            
+        const tawarasugi = new L.marker([-71.875, 85.349], { icon: L.AwesomeMarkers.icon({ icon: 'bowl-food', prefix: 'fa', markerColor: 'darkgreen' }) }).addTo(map)
+            .bindPopup("<span id='tawarasugi' onclick = 'novelshow(this)' class='leaflet_icon'>俵杉の間</span>");
 
-            /* menu */
-            const menu_btn = document.querySelector("#menu-btn");
-            menu_btn.addEventListener("click", () => {
-                $("#menu").toggle();
-            });
+        const tabibito = new L.marker([-58.875, 59.229], { icon: L.AwesomeMarkers.icon({ icon: 'person', prefix: 'fa', markerColor: 'purple' }) }).addTo(map)
+            .bindPopup("<span id='tabibito' onclick = 'novelshow(this)' class='leaflet_icon'>旅人の間</span>");
 
-            // const back_btn = document.querySelector("#back-btn");
-            const novel_game = document.querySelector("#novelgame");
+        const aburawake = new L.marker([-98.5, 124.715], { icon: L.AwesomeMarkers.icon({ icon: 'kitchen-set', prefix: 'fa', markerColor: 'purple' }) }).addTo(map)
+            .bindPopup("<span id='aburawake' onclick = 'novelshow(this)' class='leaflet_icon'>油分けの間</span>");
 
-            /*back_btn.addEventListener("click", () => {
+        const yakushi = new L.marker([-19.375,35.235], { icon: L.AwesomeMarkers.icon({ icon: 'atom', prefix: 'fa', markerColor: 'cadetblue' }) }).addTo(map)
+            .bindPopup("<span id='yakushi' onclick = 'novelshow(this)' class='leaflet_icon'>薬師の間</span>");
 
-                novel_game.style.display = "none";
-                map_frame.style.display = "block";
-                back_btn.style.display = "none";
-                menu_btn.style.display = "block";
+        const karasu = new L.marker([-54.5, 83.224], { icon: L.AwesomeMarkers.icon({ icon: 'crow', prefix: 'fa', markerColor: 'black' }) }).addTo(map)
+            .bindPopup("<span id='karasu' onclick = 'novelshow(this)' class='leaflet_icon'>カラスの間</span>");
 
-            });*/
+        const kuku = new L.marker([-37.125, 63.728], { icon: L.AwesomeMarkers.icon({ icon: 'calculator', prefix: 'fa', markerColor: 'darkpurple' }) }).addTo(map)
+            .bindPopup("<span id='kuku' onclick = 'novelshow(this)' class='leaflet_icon'>九九の間</span>");
 
-            /* map changed */
-            //const start = document.querySelector(".start");
-            const map_frame = document.querySelector("#map");
-            const header = document.querySelector("#header");
+        const design = new L.marker([-54.75, 35.11], { icon: L.AwesomeMarkers.icon({ icon: 'image', prefix: 'fa', markerColor: 'darkred' }) }).addTo(map)
+            .bindPopup("<span id='design' onclick = 'novelshow(this)' class='leaflet_icon'>絵画の間</span>");
 
-            window.novelshow = (ele) => {
+        const general = new L.marker([-117.875, 124.715], { icon: L.AwesomeMarkers.icon({ icon: 'crown', prefix: 'fa', markerColor: 'red' }) }).addTo(map)
+            .bindPopup("<span id='general' onclick = 'novelshow(this)' class='leaflet_icon'>将軍の間</span>");
 
-                $('#menu').fadeOut();
 
-                let id_value = ele.id;
-                novel_game.innerHTML = "<iframe src='./novel_" + id_value + ".html' width='100%' height= '100%' border='0'></iframe>";
 
-                map_frame.style.display = "none";
-                header.style.display = "none";
-                novel_game.style.display = "block";
+        // Leaflet End
 
-                // menu_btn.style.display = "none";
-                // back_btn.style.display = "block";
 
-            };
 
-            /* menu button */
-            const home_btn = document.querySelector('#home-btn');
-            const intro_btn = document.querySelector('#intro-btn');
-            const manual_btn = document.querySelector('#manual-btn');
-            const share_btn = document.querySelector('#share-btn');
-            const update_btn = document.querySelector('#update-btn');
+        /* menu */
+        const menu_btn = document.querySelector("#menu-btn");
+        menu_btn.addEventListener("click", () => {
+            $("#menu").toggle();
+        });
 
-            home_btn.addEventListener('click', () => {
-                novel_game.style.display = "none";
-                map_frame.style.display = "block";
-                header.style.display = "block";
-                $('#menu').fadeOut();
-            });
-            intro_btn.addEventListener('click', () => {
-                $('#overlay').fadeIn();
-                $('#introduction').fadeIn();
-            });
-            manual_btn.addEventListener('click', () => {
-                $('#overlay').fadeIn();
-                $('#manual').fadeIn();
-            });
-            share_btn.addEventListener('click', () => {
-                $('#overlay').fadeIn();
-                $('#share').fadeIn();
-            });
-            update_btn.addEventListener('click', () => {
-                $('#overlay').fadeIn();
-                $('#update').fadeIn();
-            });
+        // const back_btn = document.querySelector("#back-btn");
+        const novel_game = document.querySelector("#novelgame");
 
-            const closed_btn = document.querySelector("#closed-btn");
-            const closed_btn2 = document.querySelector("#closed-btn2");
-            const closed_btn3 = document.querySelector("#closed-btn3");
-            const closed_btn4 = document.querySelector("#closed-btn4");
-            const overlay = document.querySelector('#overlay');
+        /*back_btn.addEventListener("click", () => {
 
-            closed_btn.addEventListener('click', () => {
-                $('#overlay').fadeOut();
-                $('#introduction').fadeOut();
-            });
-            closed_btn2.addEventListener('click', () => {
-                $('#overlay').fadeOut();
-                $('#manual').fadeOut();
-            });
-            closed_btn3.addEventListener('click', () => {
-                $('#overlay').fadeOut();
-                $('#share').fadeOut();
-            });
-            closed_btn4.addEventListener('click', () => {
-                $('#overlay').fadeOut();
-                $('#update').fadeOut();
-            });
-            overlay.addEventListener('click', () => {
-                $('#overlay').fadeOut();
-                $('#introduction').fadeOut();
-                $('#manual').fadeOut();
-                $('#share').fadeOut();
-                $('#update').fadeOut();
-            });
+            novel_game.style.display = "none";
+            map_frame.style.display = "block";
+            back_btn.style.display = "none";
+            menu_btn.style.display = "block";
+
+        });*/
+
+        /* map changed */
+        //const start = document.querySelector(".start");
+        const map_frame = document.querySelector("#map");
+        const header = document.querySelector("#header");
+
+        window.novelshow = (ele) => {
+
+            $('#menu').fadeOut();
+
+            let id_value = ele.id;
+            novel_game.innerHTML = "<iframe src='./novel_" + id_value + ".html' width='100%' height= '100%' border='0'></iframe>";
+
+            map_frame.style.display = "none";
+            header.style.display = "none";
+            novel_game.style.display = "block";
+
+            // menu_btn.style.display = "none";
+            // back_btn.style.display = "block";
+
+        };
+
+        /* menu button */
+        const home_btn = document.querySelector('#home-btn');
+        const intro_btn = document.querySelector('#intro-btn');
+        const manual_btn = document.querySelector('#manual-btn');
+        const share_btn = document.querySelector('#share-btn');
+        const update_btn = document.querySelector('#update-btn');
+
+        home_btn.addEventListener('click', () => {
+            novel_game.style.display = "none";
+            map_frame.style.display = "block";
+            header.style.display = "block";
+            $('#menu').fadeOut();
+        });
+        intro_btn.addEventListener('click', () => {
+            $('#overlay').fadeIn();
+            $('#introduction').fadeIn();
+        });
+        manual_btn.addEventListener('click', () => {
+            $('#overlay').fadeIn();
+            $('#manual').fadeIn();
+        });
+        share_btn.addEventListener('click', () => {
+            $('#overlay').fadeIn();
+            $('#share').fadeIn();
+        });
+        update_btn.addEventListener('click', () => {
+            $('#overlay').fadeIn();
+            $('#update').fadeIn();
+        });
+
+        const closed_btn = document.querySelector("#closed-btn");
+        const closed_btn2 = document.querySelector("#closed-btn2");
+        const closed_btn3 = document.querySelector("#closed-btn3");
+        const closed_btn4 = document.querySelector("#closed-btn4");
+        const overlay = document.querySelector('#overlay');
+
+        closed_btn.addEventListener('click', () => {
+            $('#overlay').fadeOut();
+            $('#introduction').fadeOut();
+        });
+        closed_btn2.addEventListener('click', () => {
+            $('#overlay').fadeOut();
+            $('#manual').fadeOut();
+        });
+        closed_btn3.addEventListener('click', () => {
+            $('#overlay').fadeOut();
+            $('#share').fadeOut();
+        });
+        closed_btn4.addEventListener('click', () => {
+            $('#overlay').fadeOut();
+            $('#update').fadeOut();
+        });
+        overlay.addEventListener('click', () => {
+            $('#overlay').fadeOut();
+            $('#introduction').fadeOut();
+            $('#manual').fadeOut();
+            $('#share').fadeOut();
+            $('#update').fadeOut();
+        });
 
     </script>
 

@@ -5,6 +5,8 @@
     <meta charset="UTF-8" name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <title>測量の間</title>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -41,7 +43,6 @@
         });
     </script>
 
-    <title>測量の間</title>
     <style>
         html,
         body {
@@ -175,7 +176,8 @@
             color: #eb6ea5;
         }
 
-        .top, .story_back {
+        .top,
+        .story_back {
             cursor: pointer;
             padding: .5rem;
             background: #b44c97;
@@ -183,7 +185,7 @@
             color: #ffffff;
         }
 
-        .top{
+        .top {
             margin-right: .5em;
         }
 
@@ -212,52 +214,52 @@
     </div>
 
     <center>
-    <div id="explanation" class="p-5">
+        <div id="explanation" class="p-5">
 
-        <div class="item_title">
-            <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
-        </div>
-
-        <div class="grid">
-            <div class="grid-inline">
-                <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
-                    <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
-                </a>
+            <div class="item_title">
+                <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
             </div>
-            <div class="grid-inline">
-                <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
-                    <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
-                </a>
+
+            <div class="grid">
+                <div class="grid-inline">
+                    <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
+                        <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
+                    </a>
+                </div>
+                <div class="grid-inline">
+                    <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
+                        <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
+                    </a>
+                </div>
             </div>
-        </div>
-
-        <div>
-
-            <h3> 模範回答</h3>
-            <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
-            <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
-            <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
-            <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
-            <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
-
-            <h3> 生成AIによる解法</h3>
 
             <div>
-                <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
-                    <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
-                </a>
+
+                <h3> 模範回答</h3>
+                <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
+                <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
+                <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
+                <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
+                <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
+
+                <h3> 生成AIによる解法</h3>
+
+                <div>
+                    <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
+                        <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
+                    </a>
+                </div>
+
+                <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
+
             </div>
 
-            <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
+            <div class="div_right" id="story_back">
+                <span class="top"><i class="fa-solid fa-angles-up"></i> TOP</span>
+                <span class="story_back" onclick="location.reload();">Story Back</span>
+            </div>
 
         </div>
-
-        <div class="div_right" id="story_back">
-            <span class="top"><i class="fa-solid fa-angles-up"></i> TOP</span>
-            <span class="story_back" onclick="location.reload();">Story Back</span>
-        </div>
-
-    </div>
     </center>
 
     <script type="module">
@@ -389,13 +391,13 @@
 
         const top_back = document.querySelector(".top");
 
-        top_back.addEventListener("click", ()=>{
+        top_back.addEventListener("click", () => {
 
             $('body,html').animate({
-					scrollTop: $("#explanation").offset().top
-				}, 1000);
+                scrollTop: $("#explanation").offset().top
+            }, 1000);
 
-				return false;
+            return false;
 
         });
 
