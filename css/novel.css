@@ -1,0 +1,130 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#text-box {
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    line-height: 1.5;
+    position: relative;
+    height: 150px;
+}
+
+#next-indicator {
+    display: inline-block;
+    margin-left: 10px;
+    animation: blink 1s infinite;
+    cursor: pointer;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+#character {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 450px;
+    pointer-events: none;
+}
+
+#choices {
+    display: none;
+}
+
+.choice-button {
+    margin-top: 5px;
+    padding: 6px 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.attribution {
+    font-size: 0.75rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, .5);
+    color: #ffffff;
+    width: 100%;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.attribution a {
+    text-decoration: none;
+    border-bottom: 1px dotted #ffffff;
+    color: #ffffff;
+}
+
+.item_title {
+    color: #19448e;
+    font-weight: bolder;
+    display: flex;
+    font-size: 1.25rem;
+    border-bottom: 2px dotted #38b48b;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+}
+
+#img_midashi {
+    display: flex;
+    width: 30px;
+}
+
+.grid {
+    display: flex;
+}
+
+h3::before {
+    font-family: "Font Awesome 6 Free";
+    content: " \e0bb";
+    font-weight: bold;
+    color: #eb6ea5;
+}
+
+.top,
+.story_back {
+    cursor: pointer;
+    padding: .5rem;
+    background: #b44c97;
+    border-radius: .5em;
+    color: #ffffff;
+}
+
+.top {
+    margin-right: .5em;
+}
+
+.div_right {
+    text-align: right;
+}
+
+#literature {
+    color: #95949a;
+    font-weight: bolder;
+    font-size: 0.75rem;
+}
