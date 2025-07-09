@@ -31,6 +31,8 @@
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
         crossorigin="anonymous"></script>
 
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
     <!-- $などで囲うために必要 -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -43,18 +45,10 @@
         });
     </script>
 
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            width: 100%;
-        }
+    <!-- novel ui 共通 -->
+    <link rel="stylesheet" href="./css/novel.css">
 
+    <style>
         #game-container {
             flex: 1;
             display: flex;
@@ -64,77 +58,6 @@
             box-sizing: border-box;
             background: url('./images/rpg/bg_turutokame.jpg') no-repeat center center;
             background-size: cover;
-        }
-
-        #text-box {
-            background: rgba(0, 0, 0, 0.7);
-            color: #ffffff;
-            border: 1px solid #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.2em;
-            line-height: 1.5;
-            position: relative;
-            height: 150px;
-        }
-
-        #next-indicator {
-            display: inline-block;
-            margin-left: 10px;
-            animation: blink 1s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        #character {
-            position: absolute;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 450px;
-            pointer-events: none;
-        }
-
-        #choices {
-            display: none;
-        }
-
-        .choice-button {
-            margin-top: 5px;
-            padding: 6px 14px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .attribution {
-            font-size: 0.75rem;
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 10;
-            background: rgba(0, 0, 0, .5);
-            color: #ffffff;
-            width: 100%;
-            text-align: right;
-            padding-right: 5px;
-        }
-
-        .attribution a {
-            text-decoration: none;
-            border-bottom: 1px dotted #ffffff;
-            color: #ffffff;
         }
 
         #explanation {
@@ -148,49 +71,6 @@
             max-width: 800px;
             text-align: left;
 
-        }
-
-        .item_title {
-            color: #19448e;
-            font-weight: bolder;
-            display: flex;
-            font-size: 1.25rem;
-            border-bottom: 2px dotted #38b48b;
-            padding-bottom: .5rem;
-            margin-bottom: 1rem;
-        }
-
-        #img_midashi {
-            display: flex;
-            width: 30px;
-        }
-
-        .grid {
-            display: flex;
-        }
-
-        h3::before {
-            font-family: "Font Awesome 6 Free";
-            content: " \e0bb";
-            font-weight: bold;
-            color: #eb6ea5;
-        }
-
-        .top,
-        .story_back {
-            cursor: pointer;
-            padding: .5rem;
-            background: #b44c97;
-            border-radius: .5em;
-            color: #ffffff;
-        }
-
-        .top {
-            margin-right: .5em;
-        }
-
-        .div_right {
-            text-align: right;
         }
     </style>
 </head>
@@ -218,42 +98,13 @@
         <div id="explanation" class="p-5">
 
             <div class="item_title">
-                <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
+                <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 徳川15代将軍
             </div>
 
             <div class="grid">
-                <div class="grid-inline">
-                    <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
-                        <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
-                    </a>
-                </div>
-                <div class="grid-inline">
-                    <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
-                        <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
-                    </a>
-                </div>
+                <div id="result"></div>
             </div>
 
-            <div>
-
-                <h3> 模範回答</h3>
-                <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
-                <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
-                <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
-                <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
-                <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
-
-                <h3> 生成AIによる解法</h3>
-
-                <div>
-                    <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
-                        <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
-                    </a>
-                </div>
-
-                <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
-
-            </div>
 
             <div class="div_right" id="story_back">
                 <span class="top"><i class="fa-solid fa-angles-up"></i> TOP</span>
@@ -264,6 +115,16 @@
     </center>
 
     <script type="module">
+
+        const data = await d3.csv('./data/tokugawa.csv');
+        const max = data.length
+
+        for (let i = 0; i < max; i++) {
+
+            result.innerHTML += '<div class="table">' + '<div class="item_title2">' + data[i].name + '</div>' + '<div class="item_ex">' + data[i].kana + '</div>' + '<img src=' + data[i].image + ' width = "100%" class="image_data">' + '</div>';
+
+        };
+
         const story = [
             {
                 text: "[あなた]...どこだ、ここは？",

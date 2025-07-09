@@ -5,7 +5,7 @@
     <meta charset="UTF-8" name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>薬師の間</title>
+    <title>浮世の間</title>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -218,40 +218,39 @@
         <div id="explanation" class="p-5">
 
             <div class="item_title">
-                <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
+                <img src="./images/icon/kokyo.svg" id="img_midashi" alt="kokyoのアイコン"> 薬師算
             </div>
 
             <div class="grid">
                 <div class="grid-inline">
-                    <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
-                        <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
-                    </a>
+                    <a href="./data/yakushi1.jpg" data-lightbox="yakushi" data-title="薬師算"><img
+                            src="./data/yakushi1.jpg" alt="薬師算" width="100%"></a>
                 </div>
                 <div class="grid-inline">
-                    <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
-                        <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
-                    </a>
+                    <a href="./data/yakushi2.jpg" data-lightbox="yakushi" data-title="現代語訳"><img
+                            src="./data/yakushi2.jpg" alt="薬師算" width="100%"></a>
                 </div>
+            </div>
+
+            <div id="literature">
+                『新編塵劫記 3巻』吉田光由 著, 国立国会図書館デジタルコレクション , インターネット公開（保護期間満了）
             </div>
 
             <div>
 
                 <h3> 模範回答</h3>
-                <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
-                <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
-                <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
-                <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
-                <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
+                <p>$4 × 4 = 16$個あり、下の碁石は必ず$12$個になるので、$16 + 12 = 28$個となる。</p>
 
-                <h3> 生成AIによる解法</h3>
+                <h3 class="text-xl my-5" id="manual_h3">一次方程式による回答</h3>
 
-                <div>
-                    <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
-                        <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
-                    </a>
-                </div>
+                <p>この問題は、１辺が8個とあるが、この数は無くても正答が可能である。</p>
+                <p class="my-3">１辺を$x$個あるとする。全体の個数は、$4(x - 1)$個とあろことになる。</p>
+                <p class="my-3">並び替えると、$(3x + 4)$個あることが分かるので、</p>
+                <p class="my-3">$4(x - 1) = 3x + 4$</p>
+                <p class="my-3">これを解いて、$x = 8$</p>
+                <p class="my-3">よって全体の個数は、$4(8 - 1) = 28$個と求められる。</p>
 
-                <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
+                <p>答え：$28$ 個</p>
 
             </div>
 

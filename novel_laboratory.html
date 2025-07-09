@@ -207,51 +207,37 @@
             </div>
         </div>
 
-        <div class="attribution">
-            京都　大原　三千院　池泉鑑賞式庭園 © T-KIMURA <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY
-                4.0</a>
-        </div>
-
     </div>
 
     <center>
         <div id="explanation" class="p-5">
 
             <div class="item_title">
-                <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
+                <img src="./images/icon/jinja.svg" id="img_midashi" alt="jinjaのアイコン"> 相似比
             </div>
 
             <div class="grid">
                 <div class="grid-inline">
-                    <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
-                        <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
-                    </a>
+                    <a href="./data/soujihi1.jpg" data-lightbox="soujihi" data-title="相似比"><img
+                            src="./data/soujihi1.jpg" alt="相似比" width="100%"></a>
                 </div>
                 <div class="grid-inline">
-                    <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
-                        <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
-                    </a>
+                    <a href="./data/soujihi2.jpg" data-lightbox="soujihi" data-title="現代語訳（改題）"><img
+                            src="./data/soujihi2.jpg" alt="現代語訳(改題)" width="100%"></a>
                 </div>
+            </div>
+
+            <div id="literature">
+                「算法点竄指南録」坂部広胖 著 ほか , 国立国会図書館デジタルコレクション , インターネット公開（保護期間満了）
             </div>
 
             <div>
 
                 <h3> 模範回答</h3>
-                <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
-                <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
-                <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
-                <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
-                <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
 
-                <h3> 生成AIによる解法</h3>
-
-                <div>
-                    <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
-                        <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
-                    </a>
-                </div>
-
-                <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
+                <h3 class="text-xl my-5" id="manual_h3">相似を使った回答</h3>
+                <p>$9 : 12 = (9 + 12) : (12 + x)$</p>
+                <p class="my-3">これを解いて、$x = 16$</p>
 
             </div>
 
