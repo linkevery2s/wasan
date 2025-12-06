@@ -5,7 +5,7 @@
     <meta charset="UTF-8" name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>絵画の間</title>
+    <title>油分けの間</title>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -140,25 +140,65 @@
     <script type="module">
         const story = [
             {
-                text: "[あなた]...どこだ、ここは？",
+                text: "[あなた]...ここはどこだろう？",
                 character: null // 画像を非表示にしたい場合
             },
             {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "始まりの洞窟 END...",
+                text: "[あなた]さっきとは違う空間のようだな...",
                 character: null
-            }
+            },
+            {
+                text: "[？？？]おいおい、勝手に入り込んで、驚かせてくれるじゃねぇか。",
+                character: "./images/rpg/set_hokusai.jpg"
+            },
+            {
+                text: "[あなた]ん？誰だろう？？？",
+                character: null
+            },
+            {
+                text: "[葛飾北斎]オレぁ葛飾北斎。江戸一番の絵描きだ。ま、世間じゃ“画狂老人”なんて呼ばれたりもしてるがね。",
+                character: "./images/rpg/hokusai.jpg"
+            },
+            {
+                text: "[あなた]か、葛飾北斎！？あの“富嶽三十六景”の...？",
+                character: null
+            },
+            {
+                text: "[あなた]本物の北斎さんですか？",
+                character: null
+            },
+            {
+                text: "[葛飾北斎]本物もなにも、他に誰がいるってんだ？ほらほら、お前さん、もっと驚け驚け！",
+                character: "./images/rpg/set_hokusai.jpg"
+            },
+            {
+                text: "[人物紹介]葛飾北斎（1760–1849）。江戸時代後期の浮世絵師にして、日本美術を世界に知らしめた巨匠。代表作『富嶽三十六景』は、ゴッホやモネをも魅了した。生涯で絶えず画号を変え、70回以上の引っ越しを行うなど、型破りで創作に没頭した芸術家である。",
+                character: "./images/rpg/set_hokusai.jpg"
+            },
+            {
+                text: "[葛飾北斎]で、だ。お前さん、ただ迷い込んできたってわけじゃねえだろ？ここに来たってことは、和算を解きにきたんじゃないのか？",
+                character: "./images/rpg/set_hokusai.jpg"
+            },
+            {
+                text: "[あなた]和算...問題を出してくれるんですか？",
+                character: null
+            },
+            {
+                text: "[葛飾北斎]おうよ！ 江戸の職人は算術にも強くなくちゃな。じゃあ一つ、北斎流・和算問答、いってみようじゃねぇか。",
+                character: "./images/rpg/set_hokusai.jpg"
+            },
+            {
+                text: "[問題]今、桶には10ℓの油が入っている。7ℓのコップと3ℓのコップを使って、2人で半々に分けるにはどうしたら良い？",
+                character: null
+            },
+            {
+                text: "[あなた]この問題は、油分け算だ！",
+                character: null
+            },
+            {
+                text: "[あなた]（ここは頑張らないと...！）よしっ、解いてみよう！",
+                character: null
+            },
         ];
 
         let currentIndex = 0;
