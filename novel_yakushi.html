@@ -43,18 +43,10 @@
         });
     </script>
 
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            width: 100%;
-        }
+    <!-- novel ui 共通 -->
+    <link rel="stylesheet" href="./css/novel.css">
 
+    <style>
         #game-container {
             flex: 1;
             display: flex;
@@ -62,135 +54,20 @@
             justify-content: flex-end;
             padding: 20px;
             box-sizing: border-box;
-            background: url('./images/rpg/bg_turutokame.jpg') no-repeat center center;
+            background: url('./images/rpg/bg_yakushi.jpg') no-repeat center center;
             background-size: cover;
-        }
-
-        #text-box {
-            background: rgba(0, 0, 0, 0.7);
-            color: #ffffff;
-            border: 1px solid #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.2em;
-            line-height: 1.5;
-            position: relative;
-            height: 150px;
-        }
-
-        #next-indicator {
-            display: inline-block;
-            margin-left: 10px;
-            animation: blink 1s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        #character {
-            position: absolute;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 450px;
-            pointer-events: none;
-        }
-
-        #choices {
-            display: none;
-        }
-
-        .choice-button {
-            margin-top: 5px;
-            padding: 6px 14px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .attribution {
-            font-size: 0.75rem;
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 10;
-            background: rgba(0, 0, 0, .5);
-            color: #ffffff;
-            width: 100%;
-            text-align: right;
-            padding-right: 5px;
-        }
-
-        .attribution a {
-            text-decoration: none;
-            border-bottom: 1px dotted #ffffff;
-            color: #ffffff;
         }
 
         #explanation {
             display: none;
             background: #ffffff;
             padding: 1rem;
-            background-image: url("./images/background/1.jpg");
+            background-image: url("./images/background/2.jpg");
             background-repeat: repeat-y;
             background-position: right;
             background-size: 25%;
             max-width: 800px;
             text-align: left;
-
-        }
-
-        .item_title {
-            color: #19448e;
-            font-weight: bolder;
-            display: flex;
-            font-size: 1.25rem;
-            border-bottom: 2px dotted #38b48b;
-            padding-bottom: .5rem;
-            margin-bottom: 1rem;
-        }
-
-        #img_midashi {
-            display: flex;
-            width: 30px;
-        }
-
-        .grid {
-            display: flex;
-        }
-
-        h3::before {
-            font-family: "Font Awesome 6 Free";
-            content: " \e0bb";
-            font-weight: bold;
-            color: #eb6ea5;
-        }
-
-        .top,
-        .story_back {
-            cursor: pointer;
-            padding: .5rem;
-            background: #b44c97;
-            border-radius: .5em;
-            color: #ffffff;
-        }
-
-        .top {
-            margin-right: .5em;
-        }
-
-        .div_right {
-            text-align: right;
         }
     </style>
 </head>
@@ -208,8 +85,10 @@
         </div>
 
         <div class="attribution">
-            京都　大原　三千院　池泉鑑賞式庭園 © T-KIMURA <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY
-                4.0</a>
+        </div>
+
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
         </div>
 
     </div>
@@ -265,25 +144,61 @@
     <script type="module">
         const story = [
             {
-                text: "[あなた]...どこだ、ここは？",
-                character: null // 画像を非表示にしたい場合
-            },
-            {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "始まりの洞窟 END...",
+                text: "[あなた]...ここは、どこだろう？工房みたいだけど...",
                 character: null
-            }
+            },
+            {
+                text: "[？？？]おや、珍しい客人だね。こんな工房に迷い込むとは、運が良いのか悪いのか。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[菱川師宣]私は菱川師宣。浮世絵の元祖なんて呼ばれているよ。もっとも、そんな大層な名は、後の人が勝手につけたものだけどね。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[あなた]えっ...！菱川師宣！？『見返り美人図』で有名な、あの...？",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[菱川師宣]そう、その“あの”だよ。まあ、私の絵なんて、見た人が楽しんでくれればそれでいいのさ。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[人物紹介]菱川師宣（生没年不詳・17世紀）。江戸初期の浮世絵師で、墨摺絵・彩色画などを手がけ、後に大流行する浮世絵文化の礎を築いた人物。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[人物紹介]代表作『見返り美人図』は、優美な女性表現として日本絵画史に名を残す。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[菱川師宣]さて、ただの見学に来たわけじゃないんだろう？私の工房に来る者は必ず「観察」が試される。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[菱川師宣]和算も絵も、まずは物事の構造をよく見ることから始まるからね。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[あなた]和算の問題...出してくれるんですか？",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[菱川師宣]もちろんだとも。では、出題するよ。",
+                character: "./images/rpg/set_moronobu.jpg"
+            },
+            {
+                text: "[問題]碁石を四方に８個ずつ並べます。今、４辺のうち３辺をくずして左に８個ずつ並べると、左端に４個ありました。碁石の個数を答えてください。",
+                character: null
+            },
+            {
+                text: "[あなた]この問題は、薬師算だ！",
+                character: null
+            },
+            {
+                text: "[あなた]よしっ、解いてみよう！",
+                character: null
+            },
         ];
 
         let currentIndex = 0;
@@ -398,6 +313,17 @@
             }, 1000);
 
             return false;
+
+        });
+
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

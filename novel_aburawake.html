@@ -68,7 +68,6 @@
             background-size: 25%;
             max-width: 800px;
             text-align: left;
-
         }
     </style>
 </head>
@@ -87,6 +86,10 @@
 
         <div class="attribution">
             葛飾北斎 (六大浮世絵師決定版) 野口米次郎 著, 国立国会図書館デジタルコレクション , インターネット公開（保護期間満了）
+        </div>
+
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
         </div>
 
     </div>
@@ -320,6 +323,17 @@
             }, 1000);
 
             return false;
+
+        });
+
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

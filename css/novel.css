@@ -108,12 +108,24 @@ h3::before {
 }
 
 .top,
-.story_back {
+.story_back{
     cursor: pointer;
     padding: .5rem;
     background: #b44c97;
     border-radius: .5em;
     color: #ffffff;
+}
+
+#skip {
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    position: absolute;
+    background: #b44c97;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: .5em 0 0 0;
+    padding: .6em;
 }
 
 .top {
