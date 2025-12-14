@@ -129,28 +129,66 @@
 
         };
 
-        const story = [
-            {
-                text: "[あなた]...どこだ、ここは？",
-                character: null // 画像を非表示にしたい場合
-            },
-            {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "始まりの洞窟 END...",
-                character: null
-            }
-        ];
+
+const story = [
+    {
+        text: "[あなた]ここは…どこだろう？ 立派な建物だけど、空気が張りつめている…。",
+        character: null
+    },
+    {
+        text: "[？？？]その場に立つだけで、周囲を読む力が試されますよ。",
+        character: null
+    },
+    {
+        text: "[あなた]え？ 今の声は…？",
+        character: null
+    },
+    {
+        text: "[春日局]私は春日局。徳川家光公を支え、大奥を預かった者です。",
+        character: "./images/rpg/set_kasuganotubone.jpg"
+    },
+    {
+        text: "[あなた]春日局…！ 大奥を取り仕切った、あの春日局様ですか！？",
+        character: null
+    },
+    {
+        text: "[人物紹介]春日局（1579–1643）。江戸幕府初期の女官。",
+        character: "./images/rpg/set_kasuganotubone.jpg"
+    },
+    {
+        text: "[人物紹介]大奥の制度を整え、将軍家を陰から支えた政治的手腕の持ち主。",
+        character: "./images/rpg/set_kasuganotubone.jpg"
+    },
+    {
+        text: "[春日局]この世は感情だけでは渡れません。数もまた、力の一つです。",
+        character: "./images/rpg/set_kasuganotubone.jpg"
+    },
+    {
+        text: "[あなた]確かに…冷静さがなければ務まらない世界ですね。",
+        character: null
+    },
+    {
+        text: "[春日局]よろしい。では、あなたに一つ試練を与えましょう。",
+        character: "./images/rpg/set_kasuganotubone.jpg"
+    },
+    {
+        text: "[あなた]試練…受けて立ちます。",
+        character: null
+    },
+    {
+        text: "[春日局]答えを誤れば、それ相応の評価となるでしょう。",
+        character: "./images/rpg/set_kasuganotubone.jpg"
+    },
+    {
+        text: "[問題]今、鶴と亀が合わせて100頭います。足の数は272本です。鶴と亀は何匹いるでしょう？",
+        character: null
+    },
+    {
+        text: "[あなた]緊張するけど…落ち着いて考えよう。",
+        character: null
+    }
+];
+
 
         let currentIndex = 0;
         const storyText = document.getElementById("story-text");
