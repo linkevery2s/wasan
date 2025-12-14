@@ -90,6 +90,10 @@
                 4.0</a>
         </div>
 
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
+        </div>
+
     </div>
 
     <center>
@@ -154,23 +158,63 @@
     <script type="module">
         const story = [
             {
-                text: "[あなた]...どこだ、ここは？",
+                text: "[あなた]ここは…どこだろう？",
                 character: null // 画像を非表示にしたい場合
             },
             {
-                text: "看板の裏側には、次のように書かれていた。",
+                text: "[？？？]ここで私と出会うとは、運がよいのか悪いのか…さて、どちらだろうな？",
+                character: null
+            },
+            {
+                text: "[あなた]えっ？誰かいる...？",
+                character: null
+            },
+            {
+                text: "[井原西鶴]拙者、井原西鶴。浮世の人情、金勘定、恋の機微まで書き連ねた戯作者よ。",
                 character: "./images/rpg/set_iharasaikaku.jpg"
             },
             {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
+                text: "[あなた]井原西鶴！？ 『日本永代蔵』とか『好色一代男』の...！",
+                character: null
             },
             {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
+                text: "[人物紹介]井原西鶴（1642–1693）。江戸前期の俳諧師・戯作者。",
+                character: "./images/rpg/set_iharasaikaku.jpg"
             },
             {
-                text: "始まりの洞窟 END...",
+                text: "[人物紹介]商人の世界や人情、恋愛、金にまつわる「浮世」を軽妙に描き、町人文化を代表する作家として知られる。",
+                character: "./images/rpg/set_iharasaikaku.jpg"
+            },
+            {
+                text: "[人物紹介]大阪を拠点に、奔放な語り口で新たな文学を開花させた",
+                character: "./images/rpg/set_iharasaikaku.jpg"
+            },
+            {
+                text: "[井原西鶴]さて、ただ挨拶して終わりでは面白くない。",
+                character: "./images/rpg/set_iharasaikaku.jpg"
+            },
+            {
+                text: "[井原西鶴]浮世に生きる者は、勘定にも強くなければいけないのだ。",
+                character: "./images/rpg/set_iharasaikaku.jpg"
+            },
+            {
+                text: "[井原西鶴]ここに一つ、和算の問題を仕込んでおいた。金の流れを読むつもりで解いてみなされ。",
+                character: "./images/rpg/set_iharasaikaku.jpg"
+            },
+            {
+                text: "[あなた]金勘定の流れを読む...なんだか西鶴らしい課題だ！",
+                character: null
+            },
+            {
+                text: "[問題]今、九九九の浜がある。それぞれの浜にはカラスが九九九羽いて九九九回鳴いている。",
+                character: null
+            },
+            {
+                text: "[問題]カラスの鳴き声は合計何回でしょうか？",
+                character: null
+            },
+            {
+                text: "[あなた]この問題はカラス算だ！手強いぞ！！",
                 character: null
             }
         ];
@@ -287,6 +331,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

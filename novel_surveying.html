@@ -401,6 +401,16 @@
 
         });
 
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
+
+        });
+
     </script>
 
     <!-- lightbox2 -->

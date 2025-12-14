@@ -92,6 +92,10 @@
                 4.0</a>
         </div>
 
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
+        </div>
+
     </div>
 
     <center>
@@ -260,6 +264,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

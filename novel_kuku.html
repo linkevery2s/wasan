@@ -47,7 +47,6 @@
     <link rel="stylesheet" href="./css/novel.css">
 
     <style>
-
         #game-container {
             flex: 1;
             display: flex;
@@ -266,6 +265,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

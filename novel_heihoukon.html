@@ -90,6 +90,10 @@
                 4.0</a>
         </div>
 
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
+        </div>
+
     </div>
 
     <center>
@@ -117,7 +121,8 @@
             <div>
 
                 <h3> 勾配</h3>
-                <p>この時代は、図形において「角度」の概念が無かったようだ。その代わり、斜傾を１尺進むとどれだけ高くなるかという「勾配」を求めて計算していた。画像を見ると、$\sqrt{\smash[b]{2}}=1.41421$と小数点第5位まで正確に計算されていることが分かります。</p>
+                <p>この時代は、図形において「角度」の概念が無かったようだ。その代わり、斜傾を１尺進むとどれだけ高くなるかという「勾配」を求めて計算していた。画像を見ると、$\sqrt{\smash[b]{2}}=1.41421$と小数点第5位まで正確に計算されていることが分かります。
+                </p>
 
                 <h3> 生成AIによる解法</h3>
 
@@ -274,6 +279,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

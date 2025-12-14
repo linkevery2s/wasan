@@ -90,6 +90,10 @@
                 4.0</a>
         </div>
 
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
+        </div>
+
     </div>
 
     <center>
@@ -147,23 +151,59 @@
     <script type="module">
         const story = [
             {
-                text: "[あなた]...どこだ、ここは？",
-                character: null // 画像を非表示にしたい場合
+                text: "[あなた]ここは…どこだろう？ とても静かで、落ち着く場所だな",
+                character: null
             },
             {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
+                text: "[？？？]風の音に耳を澄ませれば、道は自然と姿を現すもの。",
+                character: null
             },
             {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
+                text: "[あなた]え？ 誰かいる！？",
+                character: null
             },
             {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
+                text: "[松尾芭蕉]旅の俳聖、松尾芭蕉と申す。奥の細道を歩き、万物の声に句を得てきた者だ。",
+                character: "./images/rpg/set_matuobasyo.jpg"
             },
             {
-                text: "始まりの洞窟 END...",
+                text: "[あなた]ま、松尾芭蕉！？「古池や蛙飛びこむ水の音」の、あの芭蕉さんですか？？",
+                character: null
+            },
+            {
+                text: "[人物紹介]松尾芭蕉（1644–1694）。江戸時代を代表する俳人。",
+                character: "./images/rpg/set_matuobasyo.jpg"
+            },
+            {
+                text: "[人物紹介]『奥の細道』をはじめ、自然と共に生き、旅を重ねながら「詩情の世界」を切り開いた。",
+                character: "./images/rpg/set_matuobasyo.jpg"
+            },
+            {
+                text: "[松尾芭蕉]俳句とは、わずか十七音に世界を写す技。和算もまた、限られた数の中に理を見いだすもの...似ていると思わぬか？",
+                character: "./images/rpg/set_matuobasyo.jpg"
+            },
+            {
+                text: "[あなた]なるほど...蕉の言葉だと不思議と納得できる。",
+                character: null
+            },
+            {
+                text: "[松尾芭蕉]では、旅の一興として、ひとつ和算の題を。これもまた「道」を探す心が試される。",
+                character: "./images/rpg/set_matuobasyo.jpg"
+            },
+            {
+                text: "[あなた]旅の途中で和算...なんだか風流だ！",
+                character: null
+            },
+            {
+                text: "[松尾芭蕉]解ければ、君自身の「道」が一つ開けよう。",
+                character: "./images/rpg/set_matuobasyo.jpg"
+            },
+            {
+                text: "[問題]今、鶴と亀が合わせて100頭います。足の数は272本です。鶴と亀は何匹いるでしょう？",
+                character: null
+            },
+            {
+                text: "[あなた]ここで「鶴亀算」が出された！よしっ、解いてみよう！",
                 character: null
             }
         ];
@@ -280,6 +320,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

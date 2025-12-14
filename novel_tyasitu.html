@@ -97,6 +97,15 @@
             </div>
         </div>
 
+        <div class="attribution">
+            京都　大原　三千院　池泉鑑賞式庭園 © T-KIMURA <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY
+                4.0</a>
+        </div>
+
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
+        </div>
+
     </div>
 
     <center>
@@ -109,11 +118,11 @@
             <div class="grid">
                 <div class="grid-inline">
                     <a href="./data/seihatikakukei1.jpg" data-lightbox="seihatikakukei" data-title="正八角形の面積"><img
-                        src="./data/seihatikakukei1.jpg" alt="正八角形の面積" width="100%"></a>
+                            src="./data/seihatikakukei1.jpg" alt="正八角形の面積" width="100%"></a>
                 </div>
                 <div class="grid-inline">
                     <a href="./data/seihatikakukei2.jpg" data-lightbox="seihatikakukei" data-title="現代語訳（改題）"><img
-                        src="./data/seihatikakukei2.jpg" alt="現代語訳（改題）" width="100%"></a>
+                            src="./data/seihatikakukei2.jpg" alt="現代語訳（改題）" width="100%"></a>
                 </div>
             </div>
 
@@ -130,7 +139,7 @@
                 <h3> 生成AIによる解法</h3>
 
                 <div><a href="./data/ai/seihatikakukei.jpg" data-lightbox="seihatikakukei" data-title="生成AIの解法"><img
-                    src="./data/ai/seihatikakukei.jpg" width="100%" alt="生成AIの解法"></a></div>
+                            src="./data/ai/seihatikakukei.jpg" width="100%" alt="生成AIの解法"></a></div>
 
                 <p>答え：$ 2 ( \sqrt{2} + 1 ) a^2$</p>
 
@@ -280,6 +289,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 

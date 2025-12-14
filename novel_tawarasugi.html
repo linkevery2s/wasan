@@ -5,7 +5,7 @@
     <meta charset="UTF-8" name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>発明の間</title>
+    <title>俵杉の間</title>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -90,6 +90,10 @@
                 4.0</a>
         </div>
 
+        <div class="div_right" id="skip">
+            <span class="skip">Skip</span>
+        </div>
+
     </div>
 
     <center>
@@ -113,7 +117,7 @@
 
             <div id="literature">
                 『新編塵劫記 3巻』吉田光由 著, 国立国会図書館デジタルコレクション , インターネット公開（保護期間満了）
-              </div>
+            </div>
 
             <div>
 
@@ -280,6 +284,16 @@
             }, 1000);
 
             return false;
+
+        });
+
+        /* スキップボタン */
+        const skip = document.querySelector(".skip");
+
+        skip.addEventListener("click", () => {
+
+            document.querySelector("#game-container").style.display = "none";
+            $('#explanation').fadeIn();
 
         });
 
