@@ -142,27 +142,63 @@
 
     <script type="module">
         const story = [
-            {
-                text: "[あなた]...どこだ、ここは？",
-                character: null // 画像を非表示にしたい場合
-            },
-            {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "始まりの洞窟 END...",
-                character: null
-            }
-        ];
+    {
+        text: "[あなた]ここは…どこだろう？ 遠くまで道が続いていて、地面がしっかり見える。",
+        character: null
+    },
+    {
+        text: "[？？？]一歩一歩を確かめれば、道の形は必ず見えてきます。",
+        character: null
+    },
+    {
+        text: "[あなた]え？ 今の声は…？",
+        character: null
+    },
+    {
+        text: "[伊能忠敬]私は伊能忠敬。日本の国土を測り歩いた者です。",
+        character: "./images/rpg/set_inoutadataka.jpg"
+    },
+    {
+        text: "[あなた]伊能忠敬！？ 日本地図を作った、あの伊能先生ですか！？",
+        character: null
+    },
+    {
+        text: "[人物紹介]伊能忠敬（1745–1818）。江戸時代後期の測量家。",
+        character: "./images/rpg/set_inoutadataka.jpg"
+    },
+    {
+        text: "[人物紹介]50歳を過ぎてから測量を志し、日本全国を歩いて精密な地図を完成させた。",
+        character: "./images/rpg/set_inoutadataka.jpg"
+    },
+    {
+        text: "[伊能忠敬]測量とは、感覚ではなく数を信じる仕事です。",
+        character: "./images/rpg/set_inoutadataka.jpg"
+    },
+    {
+        text: "[あなた]確かに…少しの誤差が、大きな違いになりますね。",
+        character: null
+    },
+    {
+        text: "[伊能忠敬]和算も同じ。小さな計算の積み重ねが、正しい答えへ導きます。",
+        character: "./images/rpg/set_inoutadataka.jpg"
+    },
+    {
+        text: "[あなた]一気に解こうとせず、順番に考えればいいんですね。",
+        character: null
+    },
+    {
+        text: "[伊能忠敬]その通り。焦らず、確実に進みなさい。",
+        character: "./images/rpg/set_inoutadataka.jpg"
+    },
+    {
+        text: "[問題]今、鶴と亀が合わせて100頭います。足の数は272本です。鶴と亀は何匹いるでしょう？",
+        character: null
+    },
+    {
+        text: "[あなた]一歩ずつ計算すれば…答えは見えてくるはずだ。",
+        character: null
+    }
+];
 
         let currentIndex = 0;
         const storyText = document.getElementById("story-text");
