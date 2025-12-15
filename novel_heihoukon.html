@@ -145,27 +145,63 @@
 
     <script type="module">
         const story = [
-            {
-                text: "[あなた]...どこだ、ここは？",
-                character: null // 画像を非表示にしたい場合
-            },
-            {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "始まりの洞窟 END...",
-                character: null
-            }
-        ];
+    {
+        text: "[あなた]ここは…どこだろう？ 静かなのに、胸がざわつく感じがする。",
+        character: null
+    },
+    {
+        text: "[？？？]そのざわめきこそが志の芽だ。見過ごすな。",
+        character: null
+    },
+    {
+        text: "[あなた]え？ 今の声は…！？",
+        character: null
+    },
+    {
+        text: "[吉田松陰]私は吉田松陰。学びをもって国を変えようとした、一介の書生だ。",
+        character: "./images/rpg/set_yosidasyouin.jpg"
+    },
+    {
+        text: "[あなた]吉田松陰！？ 松下村塾の松陰先生ですか！？",
+        character: null
+    },
+    {
+        text: "[人物紹介]吉田松陰（1830–1859）。幕末の思想家・教育者。",
+        character: "./images/rpg/set_yosidasyouin.jpg"
+    },
+    {
+        text: "[人物紹介]身分を問わず若者を育て、その教えは明治維新を担う人材を生んだ。",
+        character: "./images/rpg/set_yosidasyouin.jpg"
+    },
+    {
+        text: "[吉田松陰]学問とは、己を高め、世を良くするためにある。",
+        character: "./images/rpg/set_yosidasyouin.jpg"
+    },
+    {
+        text: "[あなた]学ぶことが、そのまま行動につながるんですね。",
+        character: null
+    },
+    {
+        text: "[吉田松陰]その通りだ。では問おう。数と向き合う覚悟はあるか？",
+        character: "./images/rpg/set_yosidasyouin.jpg"
+    },
+    {
+        text: "[あなた]はい！ 逃げずに挑戦します！",
+        character: null
+    },
+    {
+        text: "[吉田松陰]よろしい。答えを出すまで、考え抜け。",
+        character: "./images/rpg/set_yosidasyouin.jpg"
+    },
+    {
+        text: "[問題]今、鶴と亀が合わせて100頭います。足の数は272本です。鶴と亀は何匹いるでしょう？",
+        character: null
+    },
+    {
+        text: "[あなた]志を持って考えれば…必ず答えにたどり着けるはずだ！",
+        character: null
+    }
+];
 
         let currentIndex = 0;
         const storyText = document.getElementById("story-text");
