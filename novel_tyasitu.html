@@ -155,27 +155,63 @@
 
     <script type="module">
         const story = [
-            {
-                text: "[あなた]...どこだ、ここは？",
-                character: null // 画像を非表示にしたい場合
-            },
-            {
-                text: "看板の裏側には、次のように書かれていた。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[看板の裏側]始まりの洞窟にようこそ。ここは、和算について学べるダンジョンです。ダンジョン内の様々なマーカーをタップしてみてください。",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "[あなた]和算か、面白そうだな。学んでみよう！",
-                character: "./images/rpg/set_sugitagenpaku.jpg"
-            },
-            {
-                text: "始まりの洞窟 END...",
-                character: null
-            }
-        ];
+    {
+        text: "[あなた]ここは…どこだろう？ とても静かだけど、どこか張りつめた空気を感じる…",
+        character: null
+    },
+    {
+        text: "[？？？]迷って立ち止まるより、前を向きなさい。道は、戦う覚悟のある者に開けます。",
+        character: null
+    },
+    {
+        text: "[あなた]え？ 今の声は…！？",
+        character: null
+    },
+    {
+        text: "[新島八重]私は新島八重。会津に生まれ、銃を手に戦場に立った女です。",
+        character: "./images/rpg/set_niijimayae.jpg"
+    },
+    {
+        text: "[あなた]新島八重！？ 戊辰戦争で活躍した、あの八重さんですか！？",
+        character: null
+    },
+    {
+        text: "[人物紹介]新島八重（1845–1932）。会津藩出身。戊辰戦争では自ら銃を取り、城を守った女性。",
+        character: "./images/rpg/set_niijimayae.jpg"
+    },
+    {
+        text: "[人物紹介]後に同志社大学創設者・新島襄の妻となり、教育と女性の自立に尽力した。",
+        character: "./images/rpg/set_niijimayae.jpg"
+    },
+    {
+        text: "[新島八重]戦も学びも同じです。状況を正しく見極め、理を積み重ねることが勝利につながる。",
+        character: "./images/rpg/set_niijimayae.jpg"
+    },
+    {
+        text: "[あなた]なるほど…冷静に考える力が必要なんですね。",
+        character: null
+    },
+    {
+        text: "[新島八重]では、あなたの覚悟を確かめましょう。これは和算の問題です。",
+        character: "./images/rpg/set_niijimayae.jpg"
+    },
+    {
+        text: "[あなた]よし…頭を切り替えて挑戦します！",
+        character: null
+    },
+    {
+        text: "[新島八重]恐れず、数と向き合いなさい。答えは必ず導けます。",
+        character: "./images/rpg/set_niijimayae.jpg"
+    },
+    {
+        text: "[問題]今、鶴と亀が合わせて100頭います。足の数は272本です。鶴と亀は何匹いるでしょう？",
+        character: null
+    },
+    {
+        text: "[あなた]ここで「鶴亀算」か…！落ち着いて考えれば、きっと解ける！",
+        character: null
+    }
+];
 
         let currentIndex = 0;
         const storyText = document.getElementById("story-text");
