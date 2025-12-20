@@ -54,7 +54,7 @@
             justify-content: flex-end;
             padding: 20px;
             box-sizing: border-box;
-            background: url('./images/rpg/bg_turutokame.jpg') no-repeat center center;
+            background: url('./images/rpg/bg_surveying.jpg') no-repeat center center;
             background-size: cover;
         }
 
@@ -69,6 +69,74 @@
             max-width: 800px;
             text-align: left;
 
+        }
+
+        #overlay {
+            width: 100%;
+            height: 120vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .8);
+            display: none;
+            z-index: 10;
+        }
+
+        #image-src {
+            display: none;
+            height: 85%;
+            max-height: 800px;
+            left: 50%;
+            position: fixed;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 95%;
+            max-width: 600px;
+            z-index: 11;
+            background: #ffffff;
+            padding: .3em;
+            border-radius: .3em;
+        }
+
+        #image-link {
+            width: 100%;
+            height: 80%;
+            max-height: 700px;
+        }
+
+        iframe {
+            border: none;
+        }
+
+        #closed-btn {
+            position: absolute;
+            right: 4px;
+            color: #ffffff;
+            background: #eb6ea5;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bolder;
+            border-radius: .3em;
+        }
+
+        #closed-btn:hover {
+            background: #ffffff;
+            color: #9d5b8b;
+            border: 1px solid #9d5b8b;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        #literature {
+            color: #95949a;
+            font-weight: bolder;
+        }
+
+        #literature a {
+            color: #95949a;
+            border-bottom: 1px dotted #95949a;
         }
     </style>
 </head>
@@ -85,7 +153,12 @@
             </div>
         </div>
 
-<div class="div_right" id="skip">
+        <div class="attribution">
+            桜・東京スカイツリー、東京都 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY
+                4.0</a>
+        </div>
+
+        <div class="div_right" id="skip">
             <span class="skip">Skip</span>
         </div>
 
@@ -94,111 +167,109 @@
     <center>
         <div id="explanation" class="p-5">
 
-            <div class="item_title">
-                <img src="./images/icon/rakugo.svg" id="img_midashi" alt="rakugoのアイコン"> 鶴亀算
-            </div>
-
+            <div class="item_title text-xl mb-3"><img src="./images/icon/kyampu.svg" id="img_midashi" alt="kyampuのアイコン">
+                古来の測量技術</div>
             <div class="grid">
-                <div class="grid-inline">
-                    <a href="./data/turukame1.jpg" data-lightbox="turukame" data-title="鶴亀算">
-                        <img src="./data/turukame1.jpg" width="100%" alt="鶴亀算">
-                    </a>
-                </div>
-                <div class="grid-inline">
-                    <a href="./data/turukame2.jpg" data-lightbox="turukame" data-title="現代語訳">
-                        <img src="./data/turukame2.jpg" width="100%" alt="現代語訳">
-                    </a>
+                <div class="grid-inline"><a href="./data/korai1.jpg" data-lightbox="古来の測量技術" data-title="青森県三内丸山遺跡"><img
+                            src="./data/korai1.jpg" alt="青森県三内丸山遺跡" width="100%"></a></div>
+                <div class="grid-inline" onclick="korai()"><img src="./data/korai2.jpg" alt="青森県三内丸山遺跡（AR・VR）"
+                        class="ar" width="100%">
                 </div>
             </div>
 
-            <div>
+            <span class="kaisetu-btn px-3 py-2 my-3 rounded-lg" onclick="below(6)">解 説 <i
+                    class="fa-solid fa-circle-chevron-down"></i></span>
 
-                <h3> 模範回答</h3>
-                <p>鶴と亀の足の本数の差は、$4 - 2 = 2$本である。</p>
-                <p class="my-3">今、$100$ 匹全てが亀とすると、足の本数は、$4 × 100 = 400$本となる。</p>
-                <p>実際の足の本数は、$272$本なので、$400 - 272 = 128$本の差額が鶴の足の数となる。</p>
-                <p class="my-3">よって、鶴は、$128 ÷ 2 = 64$ 羽と求められる。</p>
-                <p>ゆえに、亀は、$100 - 64 = 36$ 匹となる。</p>
-
-                <h3> 生成AIによる解法</h3>
-
-                <div>
-                    <a href="./data/ai/turukame.jpg" data-lightbox="turukame" data-title="生成AIの解法">
-                        <img src="./data/ai/turukame.jpg" width="100%" alt="生成AIの解法">
-                    </a>
-                </div>
-
-                <p>答え：鶴 $64$ 羽、亀 $36$ 匹</p>
-
+            <div id="6" class="kaisetu mt-3">
+                <p>青森県の三内丸山遺跡には、大型掘立柱建物跡がある。柱の直径は約1mで、柱穴の間隔、幅、深さがそれぞれ4.2m、2m、2mで全て一致する。日本では、縄文時代から測量技術が存在したことになる。</p>
             </div>
+
+            <div id="literature" class="text-xs mt-5">
+                <p><a href="https://cb.bunka.go.jp/ja" target="_blank">文化財デジタルコンテンツ</a>, 文化庁, <a
+                        href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a></p>
+                <p class="mt-2"><a href="https://ja.wikipedia.org/wiki/%E6%8E%98%E7%AB%8B%E6%9F%B1%E5%BB%BA%E7%89%A9"
+                        target="_blank">掘立柱建物</a>,Wikipedia</p>
+            </div>
+
+            <br><br><br>
 
             <div class="div_right" id="story_back">
                 <span class="top"><i class="fa-solid fa-angles-up"></i> TOP</span>
                 <span class="story_back" onclick="location.reload();">Story Back</span>
             </div>
 
+            <!-- image popup -->
+            <div id="image-src"><span id="closed-btn" class="py-2 px-3 text-xs">閉じる</span>
+
+                <div id="image-link" class="mt-10"></div>
+
+            </div>
+
+            <!-- ポップアップ用のoverlay -->
+            <div id="overlay"></div>
+
         </div>
     </center>
 
     <script type="module">
         const story = [
-    {
-        text: "[あなた]ここは…どこだろう？ 遠くまで道が続いていて、地面がしっかり見える。",
-        character: null
-    },
-    {
-        text: "[？？？]一歩一歩を確かめれば、道の形は必ず見えてきます。",
-        character: null
-    },
-    {
-        text: "[あなた]え？ 今の声は…？",
-        character: null
-    },
-    {
-        text: "[伊能忠敬]私は伊能忠敬。日本の国土を測り歩いた者です。",
-        character: "./images/rpg/set_inoutadataka.jpg"
-    },
-    {
-        text: "[あなた]伊能忠敬！？ 日本地図を作った、あの伊能先生ですか！？",
-        character: null
-    },
-    {
-        text: "[人物紹介]伊能忠敬（1745–1818）。江戸時代後期の測量家。",
-        character: "./images/rpg/set_inoutadataka.jpg"
-    },
-    {
-        text: "[人物紹介]50歳を過ぎてから測量を志し、日本全国を歩いて精密な地図を完成させた。",
-        character: "./images/rpg/set_inoutadataka.jpg"
-    },
-    {
-        text: "[伊能忠敬]測量とは、感覚ではなく数を信じる仕事です。",
-        character: "./images/rpg/set_inoutadataka.jpg"
-    },
-    {
-        text: "[あなた]確かに…少しの誤差が、大きな違いになりますね。",
-        character: null
-    },
-    {
-        text: "[伊能忠敬]和算も同じ。小さな計算の積み重ねが、正しい答えへ導きます。",
-        character: "./images/rpg/set_inoutadataka.jpg"
-    },
-    {
-        text: "[あなた]一気に解こうとせず、順番に考えればいいんですね。",
-        character: null
-    },
-    {
-        text: "[伊能忠敬]その通り。焦らず、確実に進みなさい。",
-        character: "./images/rpg/set_inoutadataka.jpg"
-    },
-    {
-        text: "[問題]今、鶴と亀が合わせて100頭います。足の数は272本です。鶴と亀は何匹いるでしょう？",
-        character: null
-    },
-    {
-        text: "[あなた]一歩ずつ計算すれば…答えは見えてくるはずだ。",
-        character: null
-    }
-];
+            {
+                text: "[あなた]ここは…どこだろう？ 遠くまで道が続いていて、地面がしっかり見える。",
+                character: null
+            },
+            {
+                text: "[？？？]一歩一歩を確かめれば、道の形は必ず見えてきます。",
+                character: null
+            },
+            {
+                text: "[あなた]え？ 今の声は…？",
+                character: null
+            },
+            {
+                text: "[伊能忠敬]私は伊能忠敬。日本の国土を測り歩いた者です。",
+                character: "./images/rpg/set_inoutadataka.jpg"
+            },
+            {
+                text: "[あなた]伊能忠敬！？ 日本地図を作った、あの伊能先生ですか！？",
+                character: null
+            },
+            {
+                text: "[人物紹介]伊能忠敬（1745–1818）。江戸時代後期の測量家。",
+                character: "./images/rpg/set_inoutadataka.jpg"
+            },
+            {
+                text: "[人物紹介]50歳を過ぎてから測量を志し、日本全国を歩いて精密な地図を完成させた。",
+                character: "./images/rpg/set_inoutadataka.jpg"
+            },
+            {
+                text: "[伊能忠敬]測量とは、感覚ではなく数を信じる仕事です。",
+                character: "./images/rpg/set_inoutadataka.jpg"
+            },
+            {
+                text: "[あなた]確かに…少しの誤差が、大きな違いになりますね。",
+                character: null
+            },
+            {
+                text: "[伊能忠敬]和算も同じ。小さな計算の積み重ねが、正しい答えへ導きます。",
+                character: "./images/rpg/set_inoutadataka.jpg"
+            },
+            {
+                text: "[あなた]一気に解こうとせず、順番に考えればいいんですね。",
+                character: null
+            },
+            {
+                text: "[伊能忠敬]その通り。焦らず、確実に進みなさい。",
+                character: "./images/rpg/set_inoutadataka.jpg"
+            },
+            {
+                text: "[テーマ]古来の測量技術を見てみよう！",
+                character: null
+            },
+            {
+                text: "[あなた]古来の測量技術...楽しみだ！！！",
+                character: null
+            }
+        ];
 
         let currentIndex = 0;
         const storyText = document.getElementById("story-text");
@@ -324,6 +395,33 @@
             $('#explanation').fadeIn();
 
         });
+
+
+        const image_link = document.querySelector("#image-link");
+        const literature = document.querySelector("#literature");
+
+        let image_src = () => {
+            $('#overlay').fadeIn();
+            $('#image-src').fadeIn();
+        };
+
+        window.korai = () => {
+
+            image_link.innerHTML = '<iframe src = "./aomoriiseki.html" width="100%" height="100%" border="0"></iframe>';
+
+            //literature.innerHTML = "<a href='https://cb.bunka.go.jp/ja' target='_blank'>文化財デジタルコンテンツ</a>、文化庁、<a href='https://creativecommons.org/licenses/by/4.0/deed.ja' target='_blank'>CC BY 4.0</a>";
+
+            image_src();
+
+        };
+
+        const closed_btn = document.querySelector("#closed-btn");
+
+        closed_btn.addEventListener('click', () => {
+            $('#overlay').fadeOut();
+            $('#image-src').fadeOut();
+        });
+
 
     </script>
 
