@@ -63,9 +63,9 @@ body {
 }
 
 .attribution {
-    font-size: 0.75rem;
+    font-size: 0.5rem;
     position: fixed;
-    top: 0;
+    bottom: 0;
     right: 0;
     z-index: 10;
     background: rgba(0, 0, 0, .5);
@@ -118,13 +118,14 @@ h3::before {
 
 #skip {
     right: 0;
-    bottom: 0;
+    top: 0;
     z-index: 9;
     position: absolute;
-    background: #b44c97;
-    color: #ffffff;
+    background: rgba(255,255,255,.8);
+    color: #000000;
     cursor: pointer;
-    border-radius: .5em 0 0 0;
+    border-radius: .5em;
+    margin: .3em .3em 0 0;
     padding: .6em;
 }
 
